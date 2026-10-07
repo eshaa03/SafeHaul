@@ -15,11 +15,11 @@ Legend: Done / In progress / Blocked / Next.
 - **Endpoints available on `main`:** (list)
 
 ## Member B: Frontend and Map
-- **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Using:** sample JSON / real API (circle one)
+- **Done:** B0 (sample JSON — all 6 files, full contract), B1 (base template, Leaflet map, SIMULATED banner, language toggle, config/api/i18n scaffold, standalone Django project)
+- **In progress:** —
+- **Blocked (waiting on whom/what):** A's Django skeleton for full integration (workaround: `frontend_project/manage.py runserver`)
+- **Next:** B2 (risk overlay patterns + segment detail popup)
+- **Using:** sample JSON
 
 ## Member C: Data and Integrations
 - **Done:**

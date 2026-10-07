@@ -1,0 +1,131 @@
+{
+  "app": {
+    "name": "SafeHaul Kerala",
+    "tagline": "Flood-aware logistics for Kerala"
+  },
+  "header": {
+    "title": "SafeHaul Kerala",
+    "lang_toggle": "മലയാളം",
+    "simulated_banner": "⚠ SIMULATED DATA — not for real navigation",
+    "data_freshness": "Data:",
+    "data_ago": "ago",
+    "data_source_live": "Live",
+    "data_source_simulated": "Simulated",
+    "data_source_historical": "Historical"
+  },
+  "nav": {
+    "map": "Map",
+    "trip": "Plan Trip",
+    "services": "Services",
+    "fleet": "Fleet"
+  },
+  "map": {
+    "loading": "Loading map data…",
+    "load_error": "Could not load map data. Showing last cached data.",
+    "no_tiles": "Map tiles unavailable — route and risk overlay still shown.",
+    "route_label_main": "Main route",
+    "route_label_alt1": "Alt route via Kodungallur"
+  },
+  "risk": {
+    "low": "Low risk",
+    "medium": "Medium risk",
+    "high": "High risk",
+    "closed": "Closed",
+    "level_label": "Risk level",
+    "score_label": "Risk score",
+    "reasons_label": "Reasons",
+    "confidence_label": "Confidence",
+    "confidence_high": "High confidence",
+    "confidence_moderate": "Moderate confidence",
+    "confidence_low": "Low confidence",
+    "data_source_label": "Data source",
+    "updated_label": "Updated",
+    "clears_in": "Expected to clear in",
+    "clears_hours": "hours",
+    "low_with_confidence": "Low risk ({confidence})",
+    "medium_with_confidence": "Medium risk ({confidence})",
+    "high_with_confidence": "High risk ({confidence})",
+    "closed_with_confidence": "Closed ({confidence})"
+  },
+  "legend": {
+    "title": "Risk levels",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "closed": "Closed"
+  },
+  "trip": {
+    "title": "Plan a trip",
+    "origin": "Origin",
+    "destination": "Destination",
+    "depart_at": "Departure time",
+    "vehicle_type": "Vehicle type",
+    "cargo_type": "Cargo type",
+    "cargo_weight": "Cargo weight (kg)",
+    "shelf_life": "Shelf life (hours)",
+    "value": "Cargo value (₹)",
+    "get_options": "Get route options",
+    "loading": "Calculating options…"
+  },
+  "vehicle": {
+    "mini_truck": "Mini truck",
+    "lcv": "Light commercial vehicle (LCV)",
+    "heavy_truck": "Heavy truck",
+    "tipper": "Tipper"
+  },
+  "options": {
+    "title": "Route options",
+    "recommended": "Recommended",
+    "type_proceed": "Proceed",
+    "type_reroute": "Reroute",
+    "type_wait": "Wait",
+    "type_divert_store": "Divert to cold store",
+    "eta_label": "ETA",
+    "eta_range": "{earliest} – {latest}",
+    "eta_reason": "Reason",
+    "distance": "Distance",
+    "fuel_cost": "Fuel cost",
+    "cargo_ok": "✓ Cargo window OK — {hours} h remaining",
+    "cargo_fail": "✗ Cargo expires before arrival",
+    "trade_offs": "Trade-offs",
+    "excluded_title": "Excluded routes",
+    "excluded_reason": "{route}: {reason}",
+    "no_options": "No safe option available.",
+    "receiver_notified": "Receiver notified of updated ETA",
+    "warnings_title": "Warnings"
+  },
+  "services": {
+    "title": "Service points",
+    "filter_all": "All",
+    "reachable_minutes": "{minutes} min away",
+    "not_reachable": "Not reachable",
+    "not_reachable_reason": "Reason: {reason}",
+    "last_verified": "Last verified: {date}",
+    "emergency_mode": "Emergency mode",
+    "cancel_emergency": "Cancel emergency",
+    "category_hospital": "Hospital",
+    "category_fuel": "Fuel",
+    "category_repair": "Repair",
+    "category_towing": "Towing",
+    "category_police": "Police",
+    "category_fire": "Fire & Rescue",
+    "category_safe_halt": "Safe halt",
+    "category_cold_store": "Cold store",
+    "category_food": "Food",
+    "category_toilet": "Toilet"
+  },
+  "fleet": {
+    "title": "Fleet overview",
+    "suggestion_go": "Go",
+    "suggestion_hold": "Hold",
+    "suggestion_divert": "Divert"
+  },
+  "offline": {
+    "banner": "You are offline — showing cached data",
+    "stale": "Risk data is {hours} h old"
+  },
+  "footer": {
+    "disclaimer": "All data labelled 'illustrative' or 'simulated' is for demonstration only. Do not use for real navigation decisions.",
+    "version": "SafeHaul Kerala · Hackathon 2026 demo"
+  }
+}
