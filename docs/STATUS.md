@@ -23,10 +23,14 @@ Legend: Done / In progress / Blocked / Next.
 
 ## Member C: Data and Integrations
 - **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Data files on `main`:** (list)
+  - C1a: `data/scripts/fetch_osm.py` — one-time Overpass fetch script; raw output in `data/scripts/raw_osm_main.json` (NH544, Aluva–Kochi area, 817 ways / 7118 nodes confirmed)
+  - C1b: `data/segments.json` (20 segments: M-01–M-12 main, A-01–A-08 alternate, M-01–M-04 shared); `data/routes.json` (main 130.5 km, alt1 129.1 km)
+  - C1c: `data/SOURCES.md` — all C1 attribute sources documented
+  - Validation: `data/scripts/validate_segments.py` passes 0 errors / 0 warnings
+- **In progress:** (nothing — C1 complete)
+- **Blocked (waiting on whom/what):** Nothing for C2; C3 onwards may need A's risk engine to verify service-point reachability logic
+- **Next:** C2 — `data/scenarios.json` (normal + flood) with formula validation script
+- **Data files on `main`:** `data/segments.json`, `data/routes.json`, `data/SOURCES.md`
 
 ## Member D: Hardware and Emergency Communication
 - **Done:**
