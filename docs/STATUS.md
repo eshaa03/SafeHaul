@@ -8,25 +8,31 @@ Legend: Done / In progress / Blocked / Next.
 ---
 
 ## Member A: Backend and Risk Engine
-- **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Endpoints available on `main`:** (list)
+- **Done:** A1–A5 complete — full backend live. Risk engine (`score_segment` with §1.11 formula, flood memory, overrides, confidence, reasons); ETA range with reason string, peak-hour + rest-break rules; route options hard filters (safety → shelf life → clearance P1 stub), `proceed/reroute/wait/divert_store` options, exactly-one `recommended`; service-point reachability ranking (`reachable=false` with reason for blocked hospitals); 48/48 tests passing.
+- **In progress:** —
+- **Blocked (waiting on whom/what):** `data/` files from C (stand-in fixture is live; loader auto-switches when C delivers)
+- **Next:** A6 stretch (fleet endpoint) after demo stabilisation; wire weather client when C delivers
+- **Endpoints available on `main`:** `GET /api/scenario/`, `POST /api/scenario/`, `GET /api/routes/`, `GET /api/segments/`, `POST /api/trip/options/`, `GET /api/service-points/`
 
 ## Member B: Frontend and Map
-- **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Using:** sample JSON / real API (circle one)
+- **Done:** B0 (sample JSON), B1 (base template, Leaflet map, scaffold), B2 (risk overlay with colour+pattern+icon, segment detail popup), B3 (flood toggle → POST /api/scenario/ + map reload), B4 (option cards, ETA range, cargo window, excluded routes, receiver toast), B5 (hospital list from /api/service-points/)
+- **In progress:** —
+- **Blocked (waiting on whom/what):** A's Django skeleton for full integration (workaround: `python -m django runserver --settings=frontend_project.settings`)
+- **Next:** B6 (Malayalam toggle polish, PWA/service worker, offline sliding window)
+- **Using:** sample JSON
 
 ## Member C: Data and Integrations
 - **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Data files on `main`:** (list)
+  - C1: `data/segments.json` (20 segs), `data/routes.json` (main 130.5 km, alt1 129.1 km); OSM geometry; validate_segments.py passes 0 errors
+  - C2: `data/scenarios.json` (normal + flood); validate_risk.py passes all assertions — 4 high segs on main in flood, alt1 clean, wait excluded by shelf-life (8.47 h > 8 h)
+  - C3: `data/service_points.json` (30 points: 4 hospitals, 7 fuel, 4 repair, 1 towing, 5 police, 2 fire, 4 safe_halt, 3 cold_store, 3 food); H-01/H-02 nearest-reachable flip wired in
+  - C6 (partial): `data/vehicles.json` (4 types), `data/emergency_codes.json` (codes 01–07, ml empty pending native review)
+  - `data/SOURCES.md` — full provenance for all files
+  - `data/scripts/validate_risk.py`, `data/scripts/validate_segments.py` — both pass 0 errors
+- **In progress:** (nothing — C1/C2/C3/C6-partial complete)
+- **Blocked (waiting on whom/what):** `emergency_codes.json` `ml` field needs native Malayalam review — question logged for E
+- **Next:** C4 (weather client + Open-Meteo), C5 (flood_history.json + flood_memory.py), fleet.json
+- **Data files on `main`:** `data/segments.json`, `data/routes.json`, `data/scenarios.json`, `data/service_points.json`, `data/vehicles.json`, `data/emergency_codes.json`, `data/SOURCES.md`
 
 ## Member D: Hardware and Emergency Communication
 - **Done:**

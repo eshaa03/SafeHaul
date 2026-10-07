@@ -1,44 +1,51 @@
 [
   {
     "code": "01",
-    "en": "SOS — driver needs help",
-    "ml": "SOS — ഡ്രൈവർക്ക് സഹായം ആവശ്യമാണ്",
+    "en": "SOS — driver needs immediate assistance",
+    "ml": "",
+    "ml_note": "needs native Malayalam review (E to arrange)",
     "severity": "critical"
   },
   {
     "code": "02",
-    "en": "Landslide ahead",
-    "ml": "മുന്നിൽ മണ്ണിടിച്ചിൽ",
+    "en": "Landslide ahead — road blocked",
+    "ml": "",
+    "ml_note": "needs native Malayalam review",
     "severity": "high"
   },
   {
     "code": "03",
-    "en": "Flood ahead",
-    "ml": "മുന്നിൽ വെള്ളപ്പൊക്കം",
+    "en": "Flood ahead — road waterlogged or submerged",
+    "ml": "",
+    "ml_note": "needs native Malayalam review",
     "severity": "high"
   },
   {
     "code": "04",
-    "en": "Rescue needed",
-    "ml": "രക്ഷാപ്രവർത്തനം ആവശ്യമാണ്",
+    "en": "Rescue needed — vehicle or people stranded",
+    "ml": "",
+    "ml_note": "needs native Malayalam review",
     "severity": "critical"
   },
   {
     "code": "05",
-    "en": "Need load transfer",
-    "ml": "ചരക്ക് മാറ്റം ആവശ്യമാണ്",
+    "en": "Load transfer needed — cargo at risk, spare vehicle requested",
+    "ml": "",
+    "ml_note": "needs native Malayalam review",
     "severity": "medium"
   },
   {
     "code": "06",
-    "en": "Spare capacity offered",
-    "ml": "അധിക ശേഷി ലഭ്യമാണ്",
-    "severity": "low"
+    "en": "Spare capacity offered — vehicle has space for additional cargo",
+    "ml": "",
+    "ml_note": "needs native Malayalam review",
+    "severity": "info"
   },
   {
     "code": "07",
-    "en": "All clear",
-    "ml": "സ്ഥിതി സാധാരണം",
-    "severity": "low"
+    "en": "All clear — road passable, situation resolved",
+    "ml": "",
+    "ml_note": "needs native Malayalam review",
+    "severity": "info"
   }
 ]

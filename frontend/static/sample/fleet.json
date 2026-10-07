@@ -1,0 +1,22 @@
+[
+  {"id": "V-01", "vehicle_id": "KL-10-AB-1234", "vehicle_type": "lcv", "segment_id": "M-03",
+   "cargo": {"type": "vegetables", "weight_kg": 4200, "shelf_life_hours": 6}, "risk_level": "low",
+   "eta": {"earliest": "2026-10-08T10:30:00+05:30", "latest": "2026-10-08T11:15:00+05:30"},
+   "suggestion": "go", "data_source": "simulated"},
+  {"id": "V-02", "vehicle_id": "KL-08-CD-5678", "vehicle_type": "heavy_truck", "segment_id": "M-06",
+   "cargo": {"type": "dairy", "weight_kg": 8000, "shelf_life_hours": 4}, "risk_level": "medium",
+   "eta": {"earliest": "2026-10-08T11:00:00+05:30", "latest": "2026-10-08T12:30:00+05:30"},
+   "suggestion": "hold", "data_source": "simulated"},
+  {"id": "V-03", "vehicle_id": "KL-07-EF-9012", "vehicle_type": "lcv", "segment_id": "A1-03",
+   "cargo": {"type": "electronics", "weight_kg": 1500, "shelf_life_hours": null}, "risk_level": "medium",
+   "eta": {"earliest": "2026-10-08T12:00:00+05:30", "latest": "2026-10-08T13:00:00+05:30"},
+   "suggestion": "go", "data_source": "simulated"},
+  {"id": "V-04", "vehicle_id": "KL-11-GH-3456", "vehicle_type": "mini_truck", "segment_id": "M-01",
+   "cargo": {"type": "fish", "weight_kg": 2000, "shelf_life_hours": 3}, "risk_level": "low",
+   "eta": {"earliest": "2026-10-08T09:45:00+05:30", "latest": "2026-10-08T10:30:00+05:30"},
+   "suggestion": "divert", "data_source": "simulated"},
+  {"id": "V-05", "vehicle_id": "KL-09-IJ-7890", "vehicle_type": "tipper", "segment_id": "M-09",
+   "cargo": {"type": "gravel", "weight_kg": 12000, "shelf_life_hours": null}, "risk_level": "low",
+   "eta": {"earliest": "2026-10-08T10:00:00+05:30", "latest": "2026-10-08T10:45:00+05:30"},
+   "suggestion": "go", "data_source": "simulated"}
+]

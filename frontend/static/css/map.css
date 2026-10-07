@@ -1,0 +1,105 @@
+/*
+ * SafeHaul Kerala — map styles
+ * Map container, risk-level stroke colours, and loading/error states.
+ * Full risk patterns (dashes, icons) are added in B2.
+ */
+
+/* ── Map wrapper and canvas ──────────────────────────────────────────── */
+.map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;       /* required for flex children with overflow */
+}
+
+.map-canvas {
+  width: 100%;
+  height: 100%;
+  background: #e8f0fe;  /* light blue fallback when tiles fail */
+}
+
+/* ── Loading overlay ─────────────────────────────────────────────────── */
+.map-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  z-index: 1000;
+}
+
+.map-loading[hidden] {
+  display: none;
+}
+
+/* ── No-tiles notice ─────────────────────────────────────────────────── */
+.map-no-tiles {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--warning-bg);
+  color: var(--warning-text);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #d97706;
+  pointer-events: none;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+.map-no-tiles[hidden] {
+  display: none;
+}
+
+/* ── Risk-level segment strokes ──────────────────────────────────────── */
+/*
+ * B1: solid colour only.
+ * B2 will add SVG stroke-dasharray patterns for colour-blind accessibility.
+ */
+.leaflet-pane .segment-line--low {
+  stroke: var(--risk-low);
+}
+.leaflet-pane .segment-line--medium {
+  stroke: var(--risk-medium);
+}
+.leaflet-pane .segment-line--high {
+  stroke: var(--risk-high);
+}
+.leaflet-pane .segment-line--closed {
+  stroke: var(--risk-closed);
+}
+
+/* Route background lines */
+.leaflet-pane .route-line {
+  stroke: #94a3b8;
+}
+
+/* ── Leaflet tooltip tweaks ─────────────────────────────────────────── */
+.leaflet-tooltip {
+  font-family: var(--font);
+  font-size: 0.85rem;
+  padding: 4px 8px;
+  background: rgba(31, 35, 40, 0.9);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.leaflet-tooltip::before {
+  display: none;
+}
+
+/* ── Mobile: ensure map fills the viewport ──────────────────────────── */
+@media (max-width: 767px) {
+  .map-canvas {
+    /* Full viewport height minus header (52px), footer (~36px), and banners */
+    min-height: calc(100vh - 52px - 36px);
+  }
+}

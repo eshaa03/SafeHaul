@@ -1,0 +1,105 @@
+{
+  "normal": {
+    "data_source": "simulated",
+    "timestamp": "2026-10-07T06:00:00+05:30",
+    "segments": {
+      "S-01": {
+        "rain_24h_mm": 8.0,
+        "forecast_3h_mm": 2.0,
+        "river_level_pct": 20.0,
+        "official_closure": false,
+        "crowd_reports": 0,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      },
+      "S-02": {
+        "rain_24h_mm": 12.0,
+        "forecast_3h_mm": 3.0,
+        "river_level_pct": 28.0,
+        "official_closure": false,
+        "crowd_reports": 0,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      },
+      "S-03": {
+        "rain_24h_mm": 18.0,
+        "forecast_3h_mm": 4.0,
+        "river_level_pct": 35.0,
+        "official_closure": false,
+        "crowd_reports": 0,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      },
+      "S-04": {
+        "rain_24h_mm": 10.0,
+        "forecast_3h_mm": 2.0,
+        "river_level_pct": 22.0,
+        "official_closure": false,
+        "crowd_reports": 0,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      },
+      "S-05": {
+        "rain_24h_mm": 14.0,
+        "forecast_3h_mm": 3.0,
+        "river_level_pct": 25.0,
+        "official_closure": false,
+        "crowd_reports": 0,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      }
+    }
+  },
+  "flood": {
+    "data_source": "simulated",
+    "timestamp": "2026-10-07T14:30:00+05:30",
+    "segments": {
+      "S-01": {
+        "rain_24h_mm": 35.0,
+        "forecast_3h_mm": 8.0,
+        "river_level_pct": 45.0,
+        "official_closure": false,
+        "crowd_reports": 1,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      },
+      "S-02": {
+        "rain_24h_mm": 68.0,
+        "forecast_3h_mm": 15.0,
+        "river_level_pct": 62.0,
+        "official_closure": false,
+        "crowd_reports": 2,
+        "reported_depth_level": 1,
+        "data_source": "simulated"
+      },
+      "S-03": {
+        "rain_24h_mm": 95.0,
+        "forecast_3h_mm": 22.0,
+        "river_level_pct": 88.0,
+        "official_closure": false,
+        "crowd_reports": 3,
+        "reported_depth_level": 3,
+        "clears_in_hours": 5,
+        "data_source": "simulated"
+      },
+      "S-04": {
+        "rain_24h_mm": 42.0,
+        "forecast_3h_mm": 10.0,
+        "river_level_pct": 38.0,
+        "official_closure": false,
+        "crowd_reports": 1,
+        "reported_depth_level": 0,
+        "data_source": "simulated"
+      },
+      "S-05": {
+        "rain_24h_mm": 50.0,
+        "forecast_3h_mm": 12.0,
+        "river_level_pct": 45.0,
+        "official_closure": false,
+        "crowd_reports": 1,
+        "reported_depth_level": 1,
+        "data_source": "simulated"
+      }
+    }
+  }
+}

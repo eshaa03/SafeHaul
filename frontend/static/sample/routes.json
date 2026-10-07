@@ -1,0 +1,14 @@
+[
+  {
+    "id": "main",
+    "name": "Main route via Thrissur–Chalakudy–Aluva (NH 544)",
+    "segment_ids": ["M-01","M-02","M-03","M-04","M-05","M-06","M-07","M-08","M-09","M-10","M-11","M-12"],
+    "distance_km": 90.3
+  },
+  {
+    "id": "alt1",
+    "name": "Alternate via Kodungallur–North Paravur",
+    "segment_ids": ["M-01","M-02","M-03","M-04","A1-08","A1-01","A1-02","A1-03","A1-04","A1-05","A1-06","A1-07"],
+    "distance_km": 108.1
+  }
+]

@@ -1,0 +1,136 @@
+{
+  "_note": "NEEDS NATIVE REVIEW — Malayalam translations below are machine-assisted placeholders. A native Malayalam speaker must verify all strings before the demo. Contact E to arrange review.",
+  "flood": {
+    "off": "വെള്ളപ്പൊക്കം അനുകരിക്കുക",
+    "on":  "വെള്ളപ്പൊക്കം സജീവം — ക്ലിക്ക് ചെയ്ത് മായ്ക്കുക"
+  },
+  "app": {
+    "name": "സേഫ്‌ഹോൾ കേരള",
+    "tagline": "കേരളത്തിനായുള്ള വെള്ളപ്പൊക്ക-ബോധ്യ ലോജിസ്റ്റിക്സ്"
+  },
+  "header": {
+    "title": "സേഫ്‌ഹോൾ കേരള",
+    "lang_toggle": "English",
+    "simulated_banner": "⚠ അനുകരണ ഡേറ്റ — യഥാർഥ നാവിഗേഷനായി ഉപയോഗിക്കരുത്",
+    "data_freshness": "ഡേറ്റ:",
+    "data_ago": "മുൻപ്",
+    "data_source_live": "തൽസമയം",
+    "data_source_simulated": "അനുകരണം",
+    "data_source_historical": "ചരിത്രപരം"
+  },
+  "nav": {
+    "map": "ഭൂപടം",
+    "trip": "യാത്ര ആസൂത്രണം",
+    "services": "സേവനങ്ങൾ",
+    "fleet": "ഫ്ലീറ്റ്"
+  },
+  "map": {
+    "loading": "ഭൂപട ഡേറ്റ ലോഡ് ചെയ്യുന്നു…",
+    "load_error": "ഭൂപട ഡേറ്റ ലോഡ് ചെയ്യാനായില്ല. കാഷ് ചെയ്ത ഡേറ്റ കാണിക്കുന്നു.",
+    "no_tiles": "ടൈൽ ലഭ്യമല്ല — റൂട്ടും റിസ്ക് ഓവർലേയും കാണിക്കുന്നു.",
+    "route_label_main": "പ്രധാന റൂട്ട്",
+    "route_label_alt1": "ഇതര റൂട്ട് — കൊടുങ്ങല്ലൂർ വഴി"
+  },
+  "risk": {
+    "low": "കുറഞ്ഞ അപകടസാധ്യത",
+    "medium": "മധ്യ അപകടസാധ്യത",
+    "high": "ഉയർന്ന അപകടസാധ്യത",
+    "closed": "അടഞ്ഞിരിക്കുന്നു",
+    "level_label": "അപകടസാധ്യത നില",
+    "score_label": "അപകടസ്കോർ",
+    "reasons_label": "കാരണങ്ങൾ",
+    "confidence_label": "ആത്മവിശ്വാസം",
+    "confidence_high": "ഉയർന്ന ആത്മവിശ്വാസം",
+    "confidence_moderate": "മിതമായ ആത്മവിശ്വാസം",
+    "confidence_low": "കുറഞ്ഞ ആത്മവിശ്വാസം",
+    "data_source_label": "ഡേറ്റ ഉറവിടം",
+    "updated_label": "അപ്ഡേറ്റ് ചെയ്തത്",
+    "clears_in": "ക്ലിയർ ആകും",
+    "clears_hours": "മണിക്കൂർ",
+    "low_with_confidence": "കുറഞ്ഞ അപകടസാധ്യത ({confidence})",
+    "medium_with_confidence": "മധ്യ അപകടസാധ്യത ({confidence})",
+    "high_with_confidence": "ഉയർന്ന അപകടസാധ്യത ({confidence})",
+    "closed_with_confidence": "അടഞ്ഞിരിക്കുന്നു ({confidence})"
+  },
+  "legend": {
+    "title": "അപകടസാധ്യത നിലകൾ",
+    "low": "കുറഞ്ഞ",
+    "medium": "മധ്യ",
+    "high": "ഉയർന്ന",
+    "closed": "അടഞ്ഞ"
+  },
+  "trip": {
+    "title": "യാത്ര ആസൂത്രണം",
+    "origin": "ഉത്ഭവസ്ഥാനം",
+    "destination": "ലക്ഷ്യസ്ഥാനം",
+    "depart_at": "പുറപ്പെടൽ സമയം",
+    "vehicle_type": "വാഹന തരം",
+    "cargo_type": "ചരക്ക് തരം",
+    "cargo_weight": "ചരക്ക് ഭാരം (കി.ഗ്രാം)",
+    "shelf_life": "ഷെൽഫ് ആയുസ്സ് (മണിക്കൂർ)",
+    "value": "ചരക്ക് മൂല്യം (₹)",
+    "get_options": "റൂട്ട് ഓപ്ഷനുകൾ നേടുക",
+    "loading": "ഓപ്ഷനുകൾ കണക്കാക്കുന്നു…"
+  },
+  "vehicle": {
+    "mini_truck": "മിനി ട്രക്ക്",
+    "lcv": "ലൈറ്റ് കൊമേഴ്‌സ്യൽ വാഹനം (LCV)",
+    "heavy_truck": "ഹെവി ട്രക്ക്",
+    "tipper": "ടിപ്പർ"
+  },
+  "options": {
+    "title": "റൂട്ട് ഓപ്ഷനുകൾ",
+    "recommended": "ശുപാർശ ചെയ്യുന്നു",
+    "type_proceed": "മുന്നോട്ട് പോകുക",
+    "type_reroute": "മറ്റൊരു വഴി",
+    "type_wait": "കാത്തിരിക്കുക",
+    "type_divert_store": "കോൾഡ് സ്റ്റോറിലേക്ക് മാറ്റുക",
+    "eta_label": "ETA",
+    "eta_range": "{earliest} – {latest}",
+    "eta_reason": "കാരണം",
+    "distance": "ദൂരം",
+    "fuel_cost": "ഇന്ധന ചെലവ്",
+    "cargo_ok": "✓ ചരക്ക് സമയം ശരി — {hours} മണിക്കൂർ ബാക്കി",
+    "cargo_fail": "✗ ചരക്ക് കാലഹരണ",
+    "trade_offs": "ട്രേഡ്-ഓഫുകൾ",
+    "excluded_title": "ഒഴിവാക്കിയ റൂട്ടുകൾ",
+    "excluded_reason": "{route}: {reason}",
+    "no_options": "സുരക്ഷിതമായ ഓപ്ഷൻ ലഭ്യമല്ല.",
+    "receiver_notified": "ETA അപ്ഡേറ്റ് ലഭിച്ചതായി സ്വീകർത്താവ് അറിയിക്കപ്പെട്ടു",
+    "warnings_title": "മുന്നറിയിപ്പുകൾ"
+  },
+  "services": {
+    "title": "സേവന കേന്ദ്രങ്ങൾ",
+    "filter_all": "എല്ലാം",
+    "reachable_minutes": "{minutes} മിനിറ്റ് ദൂരം",
+    "not_reachable": "എത്തിച്ചേരാൻ കഴിയില്ല",
+    "not_reachable_reason": "കാരണം: {reason}",
+    "last_verified": "അവസാനം പരിശോധിച്ചത്: {date}",
+    "emergency_mode": "അടിയന്തര മോഡ്",
+    "cancel_emergency": "അടിയന്തരം റദ്ദ് ചെയ്യുക",
+    "category_hospital": "ആശുപത്രി",
+    "category_fuel": "ഇന്ധനം",
+    "category_repair": "അറ്റകുറ്റ",
+    "category_towing": "ടോ",
+    "category_police": "പോലീസ്",
+    "category_fire": "അഗ്നിശമന",
+    "category_safe_halt": "സുരക്ഷിത വിശ്രമം",
+    "category_cold_store": "കോൾഡ് സ്റ്റോർ",
+    "category_food": "ഭക്ഷണം",
+    "category_toilet": "ടോയ്‌ലറ്റ്"
+  },
+  "fleet": {
+    "title": "ഫ്ലീറ്റ് ഓവർവ്യൂ",
+    "suggestion_go": "പോകുക",
+    "suggestion_hold": "കാക്കുക",
+    "suggestion_divert": "മാർഗ്ഗം മാറ്റുക"
+  },
+  "offline": {
+    "banner": "നിങ്ങൾ ഓഫ്‌ലൈൻ ആണ് — കാഷ് ഡേറ്റ കാണിക്കുന്നു",
+    "stale": "റിസ്ക് ഡേറ്റ {hours} മണിക്കൂർ പഴക്കമുള്ളതാണ്"
+  },
+  "footer": {
+    "disclaimer": "'അനുകരണം' അല്ലെങ്കിൽ 'ഉദാഹരണം' ലേബൽ ചെയ്ത എല്ലാ ഡേറ്റയും പ്രദർശനത്തിനു മാത്രമാണ്. യഥാർഥ നാവിഗേഷൻ തീരുമാനങ്ങൾക്ക് ഉപയോഗിക്കരുത്.",
+    "version": "സേഫ്‌ഹോൾ കേരള · ഹാക്കത്തോൺ 2026 ഡെമോ"
+  }
+}

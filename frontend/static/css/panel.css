@@ -1,0 +1,360 @@
+/*
+ * SafeHaul Kerala — panel styles
+ * Segment detail popup, risk legend, flood toggle,
+ * trip form, option cards, hospital list.
+ */
+
+/* ── Risk legend ─────────────────────────────────────────────────────── */
+.risk-legend {
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  min-width: 110px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.risk-legend__title {
+  font-weight: 700;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.risk-legend__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.risk-legend__swatch {
+  width: 28px;
+  height: 5px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.risk-legend__swatch--low    { background: #22c55e; }
+.risk-legend__swatch--medium { background: #f59e0b;
+  background-image: repeating-linear-gradient(90deg, transparent 0 6px, rgba(0,0,0,0.25) 6px 9px); }
+.risk-legend__swatch--high   { background: #ef4444;
+  background-image: repeating-linear-gradient(90deg, transparent 0 3px, rgba(0,0,0,0.3) 3px 5px); }
+.risk-legend__swatch--closed { background: #1f2328;
+  background-image: repeating-linear-gradient(90deg, transparent 0 2px, rgba(255,255,255,0.4) 2px 5px); }
+.risk-legend__icon {
+  font-size: 0.85em;
+  width: 14px;
+  text-align: center;
+}
+.risk-legend__label { color: var(--text); }
+
+/* ── Flood toggle ────────────────────────────────────────────────────── */
+.flood-toggle {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
+  background: #1d4ed8;
+  color: #fff;
+  border: none;
+  border-radius: 24px;
+  padding: 0 20px;
+  height: 44px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  white-space: nowrap;
+  transition: background 0.2s, box-shadow 0.2s;
+  font-family: var(--font);
+}
+.flood-toggle:hover   { background: #1e40af; }
+.flood-toggle--active { background: #b91c1c; box-shadow: 0 2px 14px rgba(185,28,28,0.45); }
+.flood-toggle--active:hover { background: #991b1b; }
+.flood-toggle:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
+
+/* ── Segment detail panel ────────────────────────────────────────────── */
+#seg-panel-container {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 1200;
+  max-height: 55vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.seg-panel {
+  background: #fff;
+  border-top: 4px solid var(--border);
+  padding: 14px 16px 20px;
+  font-size: 0.9rem;
+}
+.seg-panel[data-risk="low"]    { border-top-color: #22c55e; }
+.seg-panel[data-risk="medium"] { border-top-color: #f59e0b; }
+.seg-panel[data-risk="high"]   { border-top-color: #ef4444; }
+.seg-panel[data-risk="closed"] { border-top-color: #1f2328; }
+
+.seg-panel__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.seg-panel__icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.risk-icon--low    { color: #16a34a; }
+.risk-icon--medium { color: #d97706; }
+.risk-icon--high   { color: #dc2626; }
+.risk-icon--closed { color: #1f2328; }
+
+.seg-panel__name       { font-weight: 700; font-size: 1rem; line-height: 1.3; }
+.seg-panel__risk-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+
+.seg-panel__close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  padding: 4px 6px;
+  min-width: 36px; min-height: 36px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+.seg-panel__close:hover { background: var(--surface); }
+
+.seg-panel__score        { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
+.seg-panel__section-label { font-weight: 700; font-size: 0.8rem; text-transform: uppercase;
+  letter-spacing: 0.04em; color: var(--text-muted); margin-bottom: 4px; }
+
+.seg-panel__reasons {
+  margin: 0 0 10px 0;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+.seg-panel__reasons li { margin-bottom: 2px; }
+
+.seg-panel__clears {
+  font-size: 0.85rem;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
+  color: #92400e;
+}
+
+.seg-panel__meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+/* ── Side drawer ─────────────────────────────────────────────────────── */
+.side-drawer {
+  position: absolute;
+  top: 64px; right: 0;
+  width: min(360px, 94vw);
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: #fff;
+  border-left: 1px solid var(--border);
+  box-shadow: -4px 0 16px rgba(0,0,0,0.12);
+  z-index: 1050;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.side-drawer[hidden] { display: none; }
+
+.drawer-toggle {
+  position: absolute;
+  top: 64px; right: 0;
+  z-index: 1060;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  width: 32px;
+  height: 44px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: -2px 2px 8px rgba(0,0,0,0.2);
+}
+.drawer-toggle:hover { background: var(--accent-hover); }
+
+/* ── Trip form ───────────────────────────────────────────────────────── */
+.trip-form { display: flex; flex-direction: column; gap: 10px; }
+.trip-form h2 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+
+.form-row { display: flex; flex-direction: column; gap: 3px; }
+.form-row label { font-size: 0.8rem; font-weight: 600; color: var(--text-muted); }
+.form-row input,
+.form-row select {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--text);
+  background: var(--bg);
+  min-height: var(--touch-min);
+}
+.form-row input:focus,
+.form-row select:focus {
+  outline: 2px solid var(--accent);
+  border-color: var(--accent);
+}
+
+/* ── Option cards ────────────────────────────────────────────────────── */
+.opt-cards { display: flex; flex-direction: column; gap: 10px; }
+
+.opt-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, border-color 0.15s;
+  background: var(--bg);
+}
+.opt-card:hover,
+.opt-card:focus {
+  box-shadow: 0 0 0 2px var(--accent);
+  outline: none;
+}
+.opt-card--rec {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+
+.opt-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.opt-card__icon   { font-size: 1.4rem; line-height: 1; flex-shrink: 0; }
+.opt-card__title  { flex: 1; min-width: 0; }
+.opt-card__type   { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em;
+  color: var(--text-muted); font-weight: 600; }
+.opt-card__label  { font-size: 0.95rem; font-weight: 700; line-height: 1.3; }
+
+.opt-badge         { border-radius: 12px; padding: 2px 10px; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+.opt-badge--rec    { background: #22c55e; color: #fff; }
+
+.opt-card__eta   { margin-bottom: 6px; }
+.opt-eta-range   { font-size: 0.92rem; font-weight: 700; }
+.opt-eta-reason  { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+
+.opt-card__stats {
+  display: flex; gap: 12px; font-size: 0.82rem; color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.cargo-badge {
+  display: inline-block;
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.cargo-badge--ok   { background: #dcfce7; color: #15803d; }
+.cargo-badge--fail { background: #fee2e2; color: #b91c1c; }
+
+.opt-tradeoffs-wrap { margin-top: 6px; }
+.opt-tradeoffs {
+  margin: 0; padding-left: 16px;
+  font-size: 0.82rem; color: var(--text-muted); line-height: 1.55;
+}
+
+.opt-excluded {
+  margin-top: 10px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: var(--radius);
+  padding: 10px 12px;
+  font-size: 0.85rem;
+}
+.opt-excluded__title  { font-weight: 700; color: #991b1b; margin-bottom: 4px; font-size: 0.82rem;
+  text-transform: uppercase; letter-spacing: 0.04em; }
+.opt-excluded__item   { margin-top: 4px; line-height: 1.5; }
+
+.opt-warnings        { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
+.opt-warning-chip    { background: #fef9c3; border: 1px solid #fde047;
+  border-radius: 4px; padding: 4px 10px; font-size: 0.8rem; color: var(--warning-text); }
+
+.opt-empty           { padding: 12px; font-size: 0.9rem; color: var(--text-muted); font-style: italic; }
+.opt-error           { color: var(--error-text); font-size: 0.9rem; padding: 8px 0; }
+
+/* ── Hospital list ───────────────────────────────────────────────────── */
+.hospital-section h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.svc-item {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px;
+  margin-bottom: 8px;
+  background: var(--bg);
+  font-size: 0.88rem;
+}
+.svc-item--blocked { background: #fef2f2; border-color: #fca5a5; }
+.svc-item__name    { font-weight: 700; margin-bottom: 4px; }
+.svc-reachable     { color: #15803d; font-weight: 600; }
+.svc-not-reachable { color: #b91c1c; font-weight: 600; }
+.svc-reason        { font-size: 0.78rem; color: var(--text-muted); margin-top: 2px; }
+.svc-verified      { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
+.svc-empty         { font-size: 0.88rem; color: var(--text-muted); }
+
+/* ── Receiver-notified toast ─────────────────────────────────────────── */
+#receiver-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  background: #1d4ed8;
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  white-space: nowrap;
+  pointer-events: none;
+}
+#receiver-toast[hidden] { display: none; }
+
+/* ── Map layout with drawer ──────────────────────────────────────────── */
+.map-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ── Mobile tweaks ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .flood-toggle { font-size: 0.85rem; padding: 0 14px; }
+  .side-drawer  { width: 100vw; border-left: none; top: auto; bottom: 0;
+    max-height: 70vh; border-top: 1px solid var(--border); border-radius: 12px 12px 0 0; }
+  .drawer-toggle { top: auto; bottom: 70vh; right: 0; border-radius: 6px 0 0 0; }
+}
