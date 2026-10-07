@@ -11,9 +11,7 @@ Answer format (added by the answerer under the question):
 
 ## Open
 
-<!-- Example (delete once real entries exist):
-[2026-10-08] [from B to A] The options response has no `route_geometry` field; may I get the segment IDs from /api/routes/ instead? (Blocking: no)
--->
+[2026-10-08] [from C to E] `data/emergency_codes.json` has codes 01–07 with English text, but the `ml` (Malayalam) field is empty. Please arrange native Malayalam review and fill in the `ml` field before the demo. Do NOT use machine translation. (Blocking: no — demo can run with English only, but Malayalam is required for P1 UI toggle)
 
 ## Resolved
 

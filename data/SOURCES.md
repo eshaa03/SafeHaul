@@ -113,3 +113,61 @@ The following values are **not** from external sources and are clearly labelled:
 ---
 
 *Last updated by Member C, session 1. Update this file whenever a new data source is used.*
+
+---
+
+## 10. scenarios.json
+
+| Field(s) | File | Source | `data_source` | Notes |
+|---|---|---|---|---|
+| All dynamic inputs (`rain_24h_mm`, `forecast_3h_mm`, `river_level_pct`, `crowd_reports`, `reported_depth_level`, `clears_in_hours`) | `scenarios.json` | **Simulated** — values chosen by working backwards through the §1.11 formula to achieve the required risk levels for the demo (main route excluded in flood; alt1 survives). No live sensor data. | `"simulated"` | The `flood` scenario approximates conditions similar to Kerala's 2018/2019 monsoon peaks (river at 85–90% of danger level) but is not a reconstruction of any specific event. The `normal` scenario reflects typical October dry-spell values. |
+| Timestamps | `scenarios.json` | Fixed to `2026-10-08T06:00:00+05:30` (demo departure time) | `"simulated"` | Not real-time. |
+
+**Validation:** `data/scripts/validate_risk.py` confirms:
+- Flood: 4 main-route segments are `high` (M-07, M-09, M-10, M-11) → main route excluded
+- Flood: alt1 has 0 `high`/`closed` segments, 4 `medium` → alt1 survives with trade-offs shown
+- Normal: all 20 segments are `low`
+- Wait option: `clears_in_hours(5) + eta.latest(3.47 h) = 8.47 h > 8 h` → excluded by cargo shelf-life filter
+
+---
+
+## 11. service_points.json
+
+| Field(s) | File | Source | `data_source` | Notes |
+|---|---|---|---|---|
+| Hospital, police station, fire station positions (`lat`, `lng`, `name`) | `service_points.json` | **OpenStreetMap** — locations cross-checked against OSM map viewer for Chalakudy, Thrissur, Irinjalakuda, Angamaly, Aluva, Kochi (Dec 2024). Approximate positions; ±300 m accuracy. | `"historical"` | H-01 (Chalakudy District Hospital), H-02 (Irinjalakuda Taluk Hospital), H-03 (Thrissur District Hospital), H-04 (Lakeshore Hospital Kochi), P-01–P-05 (police stations), FI-01–FI-02 (fire stations), R-01–R-04 (repair shops). |
+| Fuel pump positions | `service_points.json` | OSM `amenity=fuel` search along corridor; names are representative rather than specific brands. | `"historical"` | Positions verified on OSM; operator names not verified. |
+| Cold store positions and `capacity_status` | `service_points.json` (CS-01, CS-02, CS-03) | **Simulated** — locations placed near known industrial/fisheries areas (Thrissur, Kodungallur, Aluva). Names are fictitious. Capacity status is mock. | `"simulated"` | Label `capacity_status_data_source: "simulated"` is set on all cold-store entries. Operators must be contacted before diverting cargo. |
+| Safe halt points (`safe_halt`) | `service_points.json` (SH-01 to SH-04) | **Simulated** — placed at elevated or covered truck-parking areas visible on OSM satellite view. No on-site verification. | `"simulated"` | |
+| Food stops | `service_points.json` (FD-01 to FD-03) | **Simulated** — representative positions; not verified businesses. | `"simulated"` | |
+| `attach_segment_id`, `detour_minutes` | `service_points.json` | Estimated from map — segment closest to the service point, detour time estimated at 30 km/h local road. | `"simulated"` | |
+| `last_verified` | `service_points.json` | Set to `2026-10-01` for OSM-sourced positions (date of check). Set to `"unverified"` for simulated entries. | — | |
+
+**Demo-critical design:** H-01 attaches to M-07 (Chalakudy river crossing, `high` in flood) → unreachable from route start via main route in flood scenario. H-02 attaches to A-01 (alt1 only) → always reachable. This drives the "nearest reachable hospital" flip.
+
+---
+
+## 12. vehicles.json
+
+| Field(s) | File | Source | `data_source` | Notes |
+|---|---|---|---|---|
+| All fields | `vehicles.json` | **TEAM_BRIEF.md §1.11 table** — `max_depth_level`, `height_m` values are assumptions pending verification by E. `fuel_cost_per_km_inr` is an approximate market rate (Oct 2024). | `"simulated"` | E to verify before demo. |
+
+---
+
+## 13. emergency_codes.json
+
+| Field(s) | File | Source | `data_source` | Notes |
+|---|---|---|---|---|
+| `code`, `en` text | `emergency_codes.json` | Codes 01–07 and English descriptions from **TEAM_BRIEF.md §1.10**. | `"simulated"` | English text authored by the project team. |
+| `ml` (Malayalam text) | `emergency_codes.json` | **Empty — needs native review.** Left blank pending E's arrangement of a native Malayalam speaker. | — | Do not fill with machine-translated text. |
+
+---
+
+## 14. Scripts
+
+| Script | Purpose |
+|---|---|
+| `data/scripts/validate_risk.py` | Implements §1.11 formula, asserts flood/normal scenario correctness. **Must pass before merging.** |
+| `data/scripts/validate_segments.py` | Checks §1.12 field completeness and ID cross-references. **Must pass before merging.** |
+

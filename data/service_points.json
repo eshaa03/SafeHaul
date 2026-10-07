@@ -1,0 +1,393 @@
+[
+  {
+    "_comment": "30 service points along the Palakkad-Kochi corridor. All locations are approximate real-world positions sourced from OSM/public knowledge. data_source values: OSM-verified positions are 'historical'; capacity/status fields are 'simulated'. At least 2 hospitals: H-01 attaches to M-07 (behind flood segment in flood scenario -> unreachable from route start), H-02 attaches to A-03 on alt1 -> always reachable. This drives the 'nearest reachable hospital' flip in the demo."
+  },
+
+  {
+    "id": "H-01",
+    "name": "Chalakudy District Hospital",
+    "category": "hospital",
+    "lat": 10.3017,
+    "lng": 76.3312,
+    "attach_segment_id": "M-07",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "historical",
+    "notes": "Nearest hospital to M-07. In flood scenario, M-07 is high-risk so this hospital is unreachable from route start via main."
+  },
+  {
+    "id": "H-02",
+    "name": "Irinjalakuda Taluk Hospital",
+    "category": "hospital",
+    "lat": 10.3417,
+    "lng": 76.2128,
+    "attach_segment_id": "A-01",
+    "detour_minutes": 8,
+    "last_verified": "2026-10-01",
+    "data_source": "historical",
+    "notes": "Reachable via alt1 in all scenarios. Becomes the nearest reachable hospital when H-01 is blocked."
+  },
+  {
+    "id": "H-03",
+    "name": "Thrissur District Hospital (Medical College Road)",
+    "category": "hospital",
+    "lat": 10.5253,
+    "lng": 76.2148,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 12,
+    "last_verified": "2026-10-01",
+    "data_source": "historical",
+    "notes": "Major referral hospital; reachable via M-04 (shared segment) in both scenarios."
+  },
+  {
+    "id": "H-04",
+    "name": "Lakeshore Hospital, Kochi (NH 66 Edapally)",
+    "category": "hospital",
+    "lat": 9.9816,
+    "lng": 76.2999,
+    "attach_segment_id": "M-12",
+    "detour_minutes": 10,
+    "last_verified": "2026-10-01",
+    "data_source": "historical",
+    "notes": "Destination-end hospital; reachable unless M-12 is flooded (not in current flood scenario)."
+  },
+
+  {
+    "id": "F-01",
+    "name": "Indian Oil Outlet, Palakkad Bypass",
+    "category": "fuel",
+    "lat": 10.7712,
+    "lng": 76.6398,
+    "attach_segment_id": "M-01",
+    "detour_minutes": 3,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "F-02",
+    "name": "HP Petrol Pump, Vadakkencherry",
+    "category": "fuel",
+    "lat": 10.5940,
+    "lng": 76.4710,
+    "attach_segment_id": "M-02",
+    "detour_minutes": 2,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "F-03",
+    "name": "BPCL Outlet, Thrissur (Sakthan Nagar)",
+    "category": "fuel",
+    "lat": 10.5165,
+    "lng": 76.2183,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "F-04",
+    "name": "Indian Oil, Irinjalakuda NH 544",
+    "category": "fuel",
+    "lat": 10.3427,
+    "lng": 76.2135,
+    "attach_segment_id": "M-05",
+    "detour_minutes": 2,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "F-05",
+    "name": "HP Petrol Pump, Angamaly",
+    "category": "fuel",
+    "lat": 10.1967,
+    "lng": 76.3862,
+    "attach_segment_id": "M-08",
+    "detour_minutes": 3,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "F-06",
+    "name": "BPCL, Aluva NH 544",
+    "category": "fuel",
+    "lat": 10.1005,
+    "lng": 76.3571,
+    "attach_segment_id": "M-11",
+    "detour_minutes": 3,
+    "last_verified": "2026-10-01",
+    "data_source": "historical",
+    "notes": "Attach segment M-11 is high-risk in flood scenario; unreachable from route start."
+  },
+  {
+    "id": "F-07",
+    "name": "Indian Oil, North Paravur (alt route)",
+    "category": "fuel",
+    "lat": 10.0623,
+    "lng": 76.2342,
+    "attach_segment_id": "A-05",
+    "detour_minutes": 4,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+
+  {
+    "id": "R-01",
+    "name": "Kerala Tyre Works, Thrissur",
+    "category": "repair",
+    "lat": 10.5088,
+    "lng": 76.2362,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 8,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "R-02",
+    "name": "Malabar Truck Service, Chalakudy",
+    "category": "repair",
+    "lat": 10.3074,
+    "lng": 76.3320,
+    "attach_segment_id": "M-06",
+    "detour_minutes": 6,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "R-03",
+    "name": "Periyar Auto Works, Aluva",
+    "category": "repair",
+    "lat": 10.1072,
+    "lng": 76.3513,
+    "attach_segment_id": "M-10",
+    "detour_minutes": 7,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "R-04",
+    "name": "National Tyre Service, Kodungallur",
+    "category": "repair",
+    "lat": 10.2132,
+    "lng": 76.2168,
+    "attach_segment_id": "A-03",
+    "detour_minutes": 6,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+
+  {
+    "id": "T-01",
+    "name": "Kerala Towing Service, Thrissur Bypass",
+    "category": "towing",
+    "lat": 10.5001,
+    "lng": 76.2390,
+    "attach_segment_id": "M-05",
+    "detour_minutes": 10,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  },
+
+  {
+    "id": "P-01",
+    "name": "Thrissur City Police Station",
+    "category": "police",
+    "lat": 10.5270,
+    "lng": 76.2144,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "P-02",
+    "name": "Chalakudy Police Station",
+    "category": "police",
+    "lat": 10.3025,
+    "lng": 76.3318,
+    "attach_segment_id": "M-06",
+    "detour_minutes": 4,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "P-03",
+    "name": "Angamaly Police Station",
+    "category": "police",
+    "lat": 10.1975,
+    "lng": 76.3871,
+    "attach_segment_id": "M-08",
+    "detour_minutes": 4,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "P-04",
+    "name": "Aluva Police Station",
+    "category": "police",
+    "lat": 10.1013,
+    "lng": 76.3554,
+    "attach_segment_id": "M-10",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "historical",
+    "notes": "M-10 may be high-risk in flood; reachability depends on vehicle position."
+  },
+  {
+    "id": "P-05",
+    "name": "Kodungallur Police Station",
+    "category": "police",
+    "lat": 10.2195,
+    "lng": 76.2142,
+    "attach_segment_id": "A-03",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+
+  {
+    "id": "FI-01",
+    "name": "Thrissur Fire & Rescue Station",
+    "category": "fire",
+    "lat": 10.5213,
+    "lng": 76.2131,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 6,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+  {
+    "id": "FI-02",
+    "name": "Aluva Fire & Rescue Station",
+    "category": "fire",
+    "lat": 10.1052,
+    "lng": 76.3511,
+    "attach_segment_id": "M-10",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "historical"
+  },
+
+  {
+    "id": "SH-01",
+    "name": "Vadakkencherry Truck Lay-by (elevated ground)",
+    "category": "safe_halt",
+    "lat": 10.5940,
+    "lng": 76.4720,
+    "attach_segment_id": "M-02",
+    "detour_minutes": 2,
+    "last_verified": "unverified",
+    "data_source": "simulated",
+    "notes": "Elevated lay-by above flood plain. Mock safe-halt point."
+  },
+  {
+    "id": "SH-02",
+    "name": "Thrissur NH 544 Truck Parking",
+    "category": "safe_halt",
+    "lat": 10.5120,
+    "lng": 76.2280,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 3,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  },
+  {
+    "id": "SH-03",
+    "name": "Irinjalakuda Highway Rest Area",
+    "category": "safe_halt",
+    "lat": 10.3492,
+    "lng": 76.2121,
+    "attach_segment_id": "A-01",
+    "detour_minutes": 4,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  },
+  {
+    "id": "SH-04",
+    "name": "Angamaly NH 544 Truck Halt (elevated overpass area)",
+    "category": "safe_halt",
+    "lat": 10.2012,
+    "lng": 76.3841,
+    "attach_segment_id": "M-08",
+    "detour_minutes": 3,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  },
+
+  {
+    "id": "CS-01",
+    "name": "Thrissur Cold Storage & Ice Plant (Puliyarakonam)",
+    "category": "cold_store",
+    "lat": 10.5148,
+    "lng": 76.2257,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 8,
+    "last_verified": "unverified",
+    "data_source": "simulated",
+    "capacity_status": "available",
+    "capacity_status_data_source": "simulated",
+    "notes": "Mock capacity. Contact operator before diverting. Suitable for vegetables, dairy."
+  },
+  {
+    "id": "CS-02",
+    "name": "Kodungallur Fisheries Cold Store",
+    "category": "cold_store",
+    "lat": 10.2178,
+    "lng": 76.2182,
+    "attach_segment_id": "A-03",
+    "detour_minutes": 10,
+    "last_verified": "unverified",
+    "data_source": "simulated",
+    "capacity_status": "partial",
+    "capacity_status_data_source": "simulated",
+    "notes": "Mock capacity. Fisheries cold store; also handles vegetables. Contact operator."
+  },
+  {
+    "id": "CS-03",
+    "name": "Aluva Ice & Cold Chain Hub",
+    "category": "cold_store",
+    "lat": 10.1031,
+    "lng": 76.3568,
+    "attach_segment_id": "M-10",
+    "detour_minutes": 7,
+    "last_verified": "unverified",
+    "data_source": "simulated",
+    "capacity_status": "available",
+    "capacity_status_data_source": "simulated",
+    "notes": "Mock capacity. Attach segment M-10 is reachable in flood scenario. Near Periyar; verify access during heavy rain."
+  },
+
+  {
+    "id": "FD-01",
+    "name": "Annapoorna Restaurant, Thrissur Bypass",
+    "category": "food",
+    "lat": 10.5092,
+    "lng": 76.2321,
+    "attach_segment_id": "M-04",
+    "detour_minutes": 3,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  },
+  {
+    "id": "FD-02",
+    "name": "Highway Dhaba, Chalakudy North",
+    "category": "food",
+    "lat": 10.3195,
+    "lng": 76.3218,
+    "attach_segment_id": "M-06",
+    "detour_minutes": 3,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  },
+  {
+    "id": "FD-03",
+    "name": "Angamaly Canteen, NH 544",
+    "category": "food",
+    "lat": 10.1985,
+    "lng": 76.3845,
+    "attach_segment_id": "M-08",
+    "detour_minutes": 3,
+    "last_verified": "unverified",
+    "data_source": "simulated"
+  }
+]

@@ -23,14 +23,16 @@ Legend: Done / In progress / Blocked / Next.
 
 ## Member C: Data and Integrations
 - **Done:**
-  - C1a: `data/scripts/fetch_osm.py` — one-time Overpass fetch script; raw output in `data/scripts/raw_osm_main.json` (NH544, Aluva–Kochi area, 817 ways / 7118 nodes confirmed)
-  - C1b: `data/segments.json` (20 segments: M-01–M-12 main, A-01–A-08 alternate, M-01–M-04 shared); `data/routes.json` (main 130.5 km, alt1 129.1 km)
-  - C1c: `data/SOURCES.md` — all C1 attribute sources documented
-  - Validation: `data/scripts/validate_segments.py` passes 0 errors / 0 warnings
-- **In progress:** (nothing — C1 complete)
-- **Blocked (waiting on whom/what):** Nothing for C2; C3 onwards may need A's risk engine to verify service-point reachability logic
-- **Next:** C2 — `data/scenarios.json` (normal + flood) with formula validation script
-- **Data files on `main`:** `data/segments.json`, `data/routes.json`, `data/SOURCES.md`
+  - C1: `data/segments.json` (20 segs), `data/routes.json` (main 130.5 km, alt1 129.1 km); OSM geometry; validate_segments.py passes 0 errors
+  - C2: `data/scenarios.json` (normal + flood); validate_risk.py passes all assertions — 4 high segs on main in flood, alt1 clean, wait excluded by shelf-life (8.47 h > 8 h)
+  - C3: `data/service_points.json` (30 points: 4 hospitals, 7 fuel, 4 repair, 1 towing, 5 police, 2 fire, 4 safe_halt, 3 cold_store, 3 food); H-01/H-02 nearest-reachable flip wired in
+  - C6 (partial): `data/vehicles.json` (4 types), `data/emergency_codes.json` (codes 01–07, ml empty pending native review)
+  - `data/SOURCES.md` — full provenance for all files
+  - `data/scripts/validate_risk.py`, `data/scripts/validate_segments.py` — both pass 0 errors
+- **In progress:** (nothing — C1/C2/C3/C6-partial complete)
+- **Blocked (waiting on whom/what):** `emergency_codes.json` `ml` field needs native Malayalam review — question logged for E
+- **Next:** C4 (weather client + Open-Meteo), C5 (flood_history.json + flood_memory.py), fleet.json
+- **Data files on `main`:** `data/segments.json`, `data/routes.json`, `data/scenarios.json`, `data/service_points.json`, `data/vehicles.json`, `data/emergency_codes.json`, `data/SOURCES.md`
 
 ## Member D: Hardware and Emergency Communication
 - **Done:**
