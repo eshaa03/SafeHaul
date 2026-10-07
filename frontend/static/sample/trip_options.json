@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-10-07T14:30:05+05:30",
+  "scenario": "flood",
+  "data_source": "simulated",
+  "options": [
+    {
+      "option_id": "opt-1",
+      "type": "reroute",
+      "label": "Reroute via Kodungallur",
+      "route_id": "alt1",
+      "summary": "Avoids flooded Chalakudy and Aluva stretches. Longer but fully passable.",
+      "depart_at": "2026-10-08T06:00:00+05:30",
+      "eta": {
+        "earliest": "2026-10-08T11:20:00+05:30",
+        "latest": "2026-10-08T12:30:00+05:30",
+        "reason": "+55 min vs normal: detour via Kodungallur (+18 km), 2 medium-risk segments"
+      },
+      "distance_km": 142,
+      "fuel_cost_inr": 2900,
+      "max_risk_level": "medium",
+      "cargo_window": {"ok": true, "remaining_hours_at_latest_eta": 1.5},
+      "trade_offs": ["Longer by 18 km", "Two medium-risk segments — re-check before leaving"],
+      "recommended": true
+    },
+    {
+      "option_id": "opt-2",
+      "type": "wait",
+      "label": "Wait 5 h for flood to clear",
+      "route_id": "main",
+      "summary": "Segments M-07 and M-11 forecast to clear in about 5 h. Depart 11:00 AM.",
+      "depart_at": "2026-10-08T11:00:00+05:30",
+      "eta": {
+        "earliest": "2026-10-08T15:30:00+05:30",
+        "latest": "2026-10-08T16:15:00+05:30",
+        "reason": "5 h wait + normal-route ETA; cargo window expires before latest arrival"
+      },
+      "distance_km": 124,
+      "fuel_cost_inr": 2400,
+      "max_risk_level": "medium",
+      "cargo_window": {"ok": false, "remaining_hours_at_latest_eta": -0.25},
+      "trade_offs": ["Cargo shelf life expires before latest ETA", "Fuel cost lower"],
+      "recommended": false
+    },
+    {
+      "option_id": "opt-3",
+      "type": "divert_store",
+      "label": "Divert to cold store at Thrissur",
+      "route_id": null,
+      "summary": "Store cargo at Thrissur Cold Chain facility (mock availability). Depart tomorrow morning when route is clear.",
+      "depart_at": "2026-10-08T06:00:00+05:30",
+      "eta": {
+        "earliest": null,
+        "latest": null,
+        "reason": "Delivery deferred to next day; cold store preserves cargo"
+      },
+      "distance_km": 45,
+      "fuel_cost_inr": 900,
+      "max_risk_level": "low",
+      "cargo_window": {"ok": true, "remaining_hours_at_latest_eta": 6.0},
+      "trade_offs": [
+        "Delivery delayed by ~1 day",
+        "Cold-store availability simulated — confirm before committing",
+        "Estimated value preserved: ₹2,40,000 (simulated)"
+      ],
+      "recommended": false
+    }
+  ],
+  "excluded_routes": [
+    {"route_id": "main", "reason": "Contains high-risk segments M-07 (Chalakudy river crossing) and M-11 (Aluva Periyar bridge)"}
+  ],
+  "warnings": ["Using simulated data — confirm with live conditions before departure"],
+  "message": null
+}

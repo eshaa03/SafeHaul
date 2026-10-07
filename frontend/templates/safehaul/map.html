@@ -1,0 +1,38 @@
+{% extends "safehaul/base.html" %}
+{% load static %}
+
+{% block title %}Map — SafeHaul Kerala{% endblock %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+  <!-- ── MAP CONTAINER ─────────────────────────────────────────────── -->
+  <div class="map-wrap">
+    <div id="map" class="map-canvas" role="application"
+         aria-label="Flood-risk route map for the Palakkad–Kochi corridor"></div>
+
+    <!-- Loading overlay — hidden once segments load -->
+    <div class="map-loading" id="map-loading" aria-live="polite">
+      <span data-i18n="map.loading">Loading map data…</span>
+    </div>
+
+    <!-- No-tiles notice — shown when tile network fails -->
+    <div class="map-no-tiles" id="map-no-tiles" hidden>
+      <span data-i18n="map.no_tiles">Map tiles unavailable — route and risk overlay still shown.</span>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+  <script src="{% static 'js/map.js' %}"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      MapApp.init();
+    });
+  </script>
+{% endblock %}
