@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <meta name="theme-color" content="#1d4ed8" />
+  <title>{% block title %}SafeHaul Kerala{% endblock %}</title>
+
+  <!-- Leaflet CSS — bundled locally, no CDN -->
+  <link rel="stylesheet" href="{% load static %}{% static 'vendor/leaflet/leaflet.css' %}" />
+
+  <!-- App CSS -->
+  <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- ── SIMULATED DATA BANNER ─────────────────────────────────────────── -->
+  <!-- Shown by JS when any data_source === 'simulated'.
+       CSS class 'simulated-active' on <body> makes it visible. -->
+  <div class="simulated-banner" role="alert" aria-live="polite">
+    <span data-i18n="header.simulated_banner">⚠ SIMULATED DATA — not for real navigation</span>
+  </div>
+
+  <!-- ── OFFLINE BANNER ──────────────────────────────────────────────── -->
+  <div class="offline-banner" role="status" aria-live="polite" hidden>
+    <span data-i18n="offline.banner">You are offline — showing cached data</span>
+  </div>
+
+  <!-- ── HEADER ──────────────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <div class="site-header__brand">
+        <span class="site-header__logo" aria-hidden="true">🚛</span>
+        <span class="site-header__name" data-i18n="header.title">SafeHaul Kerala</span>
+      </div>
+
+      <div class="site-header__controls">
+        <!-- Data freshness indicator — updated by map.js after each load -->
+        <span class="data-freshness" id="data-freshness" aria-live="polite" title="Last data update time"></span>
+
+        <!-- Language toggle -->
+        <button class="btn btn--ghost lang-toggle" id="lang-toggle"
+                aria-label="Switch language"
+                data-i18n="header.lang_toggle">മലയാളം</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── MAIN CONTENT ────────────────────────────────────────────────── -->
+  <main class="site-main" id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <p class="site-footer__disclaimer" data-i18n="footer.disclaimer">
+      All data labelled 'illustrative' or 'simulated' is for demonstration only.
+    </p>
+    <p class="site-footer__version" data-i18n="footer.version">SafeHaul Kerala · Hackathon 2026 demo</p>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────────────── -->
+  <!-- Load order: config → i18n → api → Leaflet → page scripts -->
+  <script src="{% static 'js/config.js' %}"></script>
+  <script src="{% static 'js/i18n.js' %}"></script>
+  <script src="{% static 'js/api.js' %}"></script>
+  <script src="{% static 'vendor/leaflet/leaflet.js' %}"></script>
+
+  {% block extra_scripts %}{% endblock %}
+
+  <script>
+    // Initialise i18n on every page.
+    document.addEventListener('DOMContentLoaded', function () {
+      I18n.init();
+
+      // Language toggle button.
+      document.getElementById('lang-toggle').addEventListener('click', function () {
+        var next = I18n.getLang() === 'en' ? 'ml' : 'en';
+        I18n.setLang(next);
+      });
+    });
+  </script>
+</body>
+</html>
