@@ -29,11 +29,11 @@ Legend: Done / In progress / Blocked / Next.
 - **Data files on `main`:** (list)
 
 ## Member D: Hardware and Emergency Communication
-- **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Hardware on hand:** (boards, GPS, antennas, cables)
+- **Done:** 2026-10-08: D1 complete — hardware/README.md written, LoRa India band settings documented (865.2 MHz SF7 14 dBm), packet formats specified, simulation fallback declared, QUESTIONS.md updated for hardware sourcing.
+- **In progress:** D2 firmware (blocked on board model confirmation from E).
+- **Blocked (waiting on whom/what):** Physical boards not yet confirmed. Waiting for E to respond to QUESTIONS.md re sourcing. Also waiting for A to merge Django skeleton before D6 (emergency app) can be wired.
+- **Next:** D4 simulation path (truck_sim.py + gateway_sim.py) — unblocked; D6 Django emergency app — unblocked once A merges skeleton.
+- **Hardware on hand:** None confirmed yet. Target: 2× Heltec WiFi LoRa 32 V2 + antennas + 1× GPS module. Fallback: software simulation (full loop on one laptop).
 
 ## Member E: Product, Pitch and QA
 - **Done:**

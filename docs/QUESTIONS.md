@@ -11,6 +11,8 @@ Answer format (added by the answerer under the question):
 
 ## Open
 
+[2026-10-08] [from D to E] Need 2x Heltec WiFi LoRa 32 V2 boards (or TTGO LoRa32 V2.1 / T-Beam as fallback) + 2x 868 MHz SMA antennas + 1x GPS module (u-blox NEO-6M or similar) + 2x micro-USB cables for the SOS demo. Can these be sourced before the demo? Using software simulation fallback in the meantime. (Blocking: no — simulation path works without boards)
+
 <!-- Example (delete once real entries exist):
 [2026-10-08] [from B to A] The options response has no `route_geometry` field; may I get the segment IDs from /api/routes/ instead? (Blocking: no)
 -->
