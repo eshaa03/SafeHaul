@@ -1,0 +1,44 @@
+[
+  {
+    "code": "01",
+    "en": "SOS — driver needs help",
+    "ml": "SOS — ഡ്രൈവർക്ക് സഹായം ആവശ്യമാണ്",
+    "severity": "critical"
+  },
+  {
+    "code": "02",
+    "en": "Landslide ahead",
+    "ml": "മുന്നിൽ മണ്ണിടിച്ചിൽ",
+    "severity": "high"
+  },
+  {
+    "code": "03",
+    "en": "Flood ahead",
+    "ml": "മുന്നിൽ വെള്ളപ്പൊക്കം",
+    "severity": "high"
+  },
+  {
+    "code": "04",
+    "en": "Rescue needed",
+    "ml": "രക്ഷാപ്രവർത്തനം ആവശ്യമാണ്",
+    "severity": "critical"
+  },
+  {
+    "code": "05",
+    "en": "Need load transfer",
+    "ml": "ചരക്ക് മാറ്റം ആവശ്യമാണ്",
+    "severity": "medium"
+  },
+  {
+    "code": "06",
+    "en": "Spare capacity offered",
+    "ml": "അധിക ശേഷി ലഭ്യമാണ്",
+    "severity": "low"
+  },
+  {
+    "code": "07",
+    "en": "All clear",
+    "ml": "സ്ഥിതി സാധാരണം",
+    "severity": "low"
+  }
+]
