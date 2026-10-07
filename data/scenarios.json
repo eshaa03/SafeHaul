@@ -1,0 +1,58 @@
+{
+  "_comment": "All values data_source: simulated. Scenario inputs drive risk scores per §1.11. In 'flood': M-07, M-09, M-11 score 'high' (main route excluded). A-04 scores 'medium' (alt1 survives). In 'normal': all segments score 'low'.",
+  "normal": {
+    "_meta": {
+      "label": "Normal operating conditions — light recent rain, rivers at seasonal low",
+      "data_source": "simulated",
+      "timestamp": "2026-10-08T06:00:00+05:30"
+    },
+    "M-01": { "rain_24h_mm": 8,  "forecast_3h_mm": 3,  "river_level_pct": 10, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-02": { "rain_24h_mm": 9,  "forecast_3h_mm": 3,  "river_level_pct": 12, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-03": { "rain_24h_mm": 10, "forecast_3h_mm": 5,  "river_level_pct": 15, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-04": { "rain_24h_mm": 11, "forecast_3h_mm": 4,  "river_level_pct": 18, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-05": { "rain_24h_mm": 12, "forecast_3h_mm": 6,  "river_level_pct": 20, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-06": { "rain_24h_mm": 10, "forecast_3h_mm": 4,  "river_level_pct": 18, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-07": { "rain_24h_mm": 10, "forecast_3h_mm": 5,  "river_level_pct": 18, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-08": { "rain_24h_mm": 9,  "forecast_3h_mm": 4,  "river_level_pct": 15, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-09": { "rain_24h_mm": 8,  "forecast_3h_mm": 4,  "river_level_pct": 15, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-10": { "rain_24h_mm": 8,  "forecast_3h_mm": 3,  "river_level_pct": 16, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-11": { "rain_24h_mm": 8,  "forecast_3h_mm": 4,  "river_level_pct": 16, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-12": { "rain_24h_mm": 7,  "forecast_3h_mm": 3,  "river_level_pct": 12, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-01": { "rain_24h_mm": 10, "forecast_3h_mm": 4,  "river_level_pct": 14, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-02": { "rain_24h_mm": 9,  "forecast_3h_mm": 3,  "river_level_pct": 13, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-03": { "rain_24h_mm": 8,  "forecast_3h_mm": 3,  "river_level_pct": 12, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-04": { "rain_24h_mm": 10, "forecast_3h_mm": 4,  "river_level_pct": 15, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-05": { "rain_24h_mm": 9,  "forecast_3h_mm": 3,  "river_level_pct": 14, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-06": { "rain_24h_mm": 8,  "forecast_3h_mm": 3,  "river_level_pct": 12, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-07": { "rain_24h_mm": 8,  "forecast_3h_mm": 3,  "river_level_pct": 11, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-08": { "rain_24h_mm": 7,  "forecast_3h_mm": 2,  "river_level_pct": 10, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" }
+  },
+  "flood": {
+    "_meta": {
+      "label": "Flood scenario — heavy monsoon rain, rivers near danger level",
+      "data_source": "simulated",
+      "timestamp": "2026-10-08T06:00:00+05:30",
+      "notes": "M-07 (Chalakudy) and M-11 (Aluva Periyar) both score 'high' — main route excluded by safety filter. M-09 (Angamaly underpass) also scores 'high'. A-04 scores 'medium' — alt1 survives. M-07 has clears_in_hours:5; 5+4.5h ETA=9.5h > 8h shelf life so Wait option is also excluded, showing cargo hard filter."
+    },
+    "M-01": { "rain_24h_mm": 15, "forecast_3h_mm": 5,  "river_level_pct": 18, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-02": { "rain_24h_mm": 18, "forecast_3h_mm": 6,  "river_level_pct": 20, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-03": { "rain_24h_mm": 50, "forecast_3h_mm": 15, "river_level_pct": 42, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-04": { "rain_24h_mm": 45, "forecast_3h_mm": 12, "river_level_pct": 38, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-05": { "rain_24h_mm": 45, "forecast_3h_mm": 12, "river_level_pct": 35, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-06": { "rain_24h_mm": 60, "forecast_3h_mm": 18, "river_level_pct": 55, "official_closure": false, "crowd_reports": 1, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-07": { "rain_24h_mm": 110, "forecast_3h_mm": 35, "river_level_pct": 90, "official_closure": false, "crowd_reports": 2, "reported_depth_level": 2, "clears_in_hours": 5, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-08": { "rain_24h_mm": 80, "forecast_3h_mm": 22, "river_level_pct": 65, "official_closure": false, "crowd_reports": 1, "reported_depth_level": 1, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-09": { "rain_24h_mm": 95, "forecast_3h_mm": 28, "river_level_pct": 82, "official_closure": false, "crowd_reports": 1, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-10": { "rain_24h_mm": 90, "forecast_3h_mm": 25, "river_level_pct": 75, "official_closure": false, "crowd_reports": 1, "reported_depth_level": 1, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-11": { "rain_24h_mm": 105, "forecast_3h_mm": 32, "river_level_pct": 88, "official_closure": false, "crowd_reports": 2, "reported_depth_level": 2, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "M-12": { "rain_24h_mm": 35, "forecast_3h_mm": 10, "river_level_pct": 30, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-01": { "rain_24h_mm": 35, "forecast_3h_mm": 10, "river_level_pct": 30, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-02": { "rain_24h_mm": 30, "forecast_3h_mm": 9,  "river_level_pct": 28, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-03": { "rain_24h_mm": 30, "forecast_3h_mm": 10, "river_level_pct": 28, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-04": { "rain_24h_mm": 55, "forecast_3h_mm": 18, "river_level_pct": 50, "official_closure": false, "crowd_reports": 1, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-05": { "rain_24h_mm": 30, "forecast_3h_mm": 9,  "river_level_pct": 28, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-06": { "rain_24h_mm": 25, "forecast_3h_mm": 8,  "river_level_pct": 22, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-07": { "rain_24h_mm": 25, "forecast_3h_mm": 8,  "river_level_pct": 20, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" },
+    "A-08": { "rain_24h_mm": 20, "forecast_3h_mm": 6,  "river_level_pct": 18, "official_closure": false, "crowd_reports": 0, "reported_depth_level": 0, "data_source": "simulated", "timestamp": "2026-10-08T06:00:00+05:30" }
+  }
+}
