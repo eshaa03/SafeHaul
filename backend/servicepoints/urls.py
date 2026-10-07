@@ -1,4 +1,6 @@
 from django.urls import path
+from servicepoints.views import ServicePointsView
 
-# /api/service-points/ is registered in A5
-urlpatterns = []
+urlpatterns = [
+    path("service-points/", ServicePointsView.as_view(), name="service-points"),
+]
