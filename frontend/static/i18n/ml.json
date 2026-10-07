@@ -1,5 +1,9 @@
 {
   "_note": "NEEDS NATIVE REVIEW — Malayalam translations below are machine-assisted placeholders. A native Malayalam speaker must verify all strings before the demo. Contact E to arrange review.",
+  "flood": {
+    "off": "വെള്ളപ്പൊക്കം അനുകരിക്കുക",
+    "on":  "വെള്ളപ്പൊക്കം സജീവം — ക്ലിക്ക് ചെയ്ത് മായ്ക്കുക"
+  },
   "app": {
     "name": "സേഫ്‌ഹോൾ കേരള",
     "tagline": "കേരളത്തിനായുള്ള വെള്ളപ്പൊക്ക-ബോധ്യ ലോജിസ്റ്റിക്സ്"

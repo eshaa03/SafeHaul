@@ -15,10 +15,10 @@ Legend: Done / In progress / Blocked / Next.
 - **Endpoints available on `main`:** (list)
 
 ## Member B: Frontend and Map
-- **Done:** B0 (sample JSON — all 6 files, full contract), B1 (base template, Leaflet map, SIMULATED banner, language toggle, config/api/i18n scaffold, standalone Django project)
+- **Done:** B0 (sample JSON), B1 (base template, Leaflet map, scaffold), B2 (risk overlay with colour+pattern+icon, segment detail popup), B3 (flood toggle → POST /api/scenario/ + map reload), B4 (option cards, ETA range, cargo window, excluded routes, receiver toast), B5 (hospital list from /api/service-points/)
 - **In progress:** —
-- **Blocked (waiting on whom/what):** A's Django skeleton for full integration (workaround: `frontend_project/manage.py runserver`)
-- **Next:** B2 (risk overlay patterns + segment detail popup)
+- **Blocked (waiting on whom/what):** A's Django skeleton for full integration (workaround: `python -m django runserver --settings=frontend_project.settings`)
+- **Next:** B6 (Malayalam toggle polish, PWA/service worker, offline sliding window)
 - **Using:** sample JSON
 
 ## Member C: Data and Integrations
