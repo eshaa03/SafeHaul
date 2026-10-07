@@ -1,0 +1,26 @@
+[
+  {
+    "vehicle_id": 1,
+    "vehicle_type": "lcv",
+    "segment_id": "S-01",
+    "cargo": {"type": "vegetables", "weight_kg": 5000, "shelf_life_hours": 8, "value_inr": 250000},
+    "hours_already_elapsed": 0,
+    "data_source": "simulated"
+  },
+  {
+    "vehicle_id": 2,
+    "vehicle_type": "heavy_truck",
+    "segment_id": "S-02",
+    "cargo": {"type": "electronics", "weight_kg": 8000, "shelf_life_hours": null, "value_inr": 1500000},
+    "hours_already_elapsed": 1,
+    "data_source": "simulated"
+  },
+  {
+    "vehicle_id": 3,
+    "vehicle_type": "mini_truck",
+    "segment_id": "S-03",
+    "cargo": {"type": "dairy", "weight_kg": 1200, "shelf_life_hours": 4, "value_inr": 80000},
+    "hours_already_elapsed": 2,
+    "data_source": "simulated"
+  }
+]

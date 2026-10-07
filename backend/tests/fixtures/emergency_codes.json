@@ -1,0 +1,9 @@
+[
+  {"code": "01", "en": "SOS — need immediate help", "ml": "SOS — ഉടനടി സഹായം ആവശ്യമാണ്"},
+  {"code": "02", "en": "Landslide ahead", "ml": "മുന്നിൽ മണ്ണിടിച്ചിൽ"},
+  {"code": "03", "en": "Flood ahead", "ml": "മുന്നിൽ വെള്ളപ്പൊക്കം"},
+  {"code": "04", "en": "Rescue needed", "ml": "രക്ഷാ പ്രവർത്തനം ആവശ്യമാണ്"},
+  {"code": "05", "en": "Need load transfer", "ml": "ചരക്ക് മാറ്റേണ്ടതുണ്ട്"},
+  {"code": "06", "en": "Spare capacity offered", "ml": "ഒഴിഞ്ഞ ശേഷി ലഭ്യമാണ്"},
+  {"code": "07", "en": "All clear", "ml": "എല്ലാം ശരിയാണ്"}
+]

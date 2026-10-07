@@ -8,11 +8,11 @@ Legend: Done / In progress / Blocked / Next.
 ---
 
 ## Member A: Backend and Risk Engine
-- **Done:**
-- **In progress:**
-- **Blocked (waiting on whom/what):**
-- **Next:**
-- **Endpoints available on `main`:** (list)
+- **Done:** A1 complete — Django 5.2/DRF skeleton; all apps (risk, routing, servicepoints, weather stub, emergency stub); `safehaul/config.py` (all §1.11 constants); `safehaul/data_loader.py` (reads `data/`; falls back to `tests/fixtures/` with visible WARNING); `GET /api/scenario/`, `POST /api/scenario/`, `GET /api/routes/`; 19/19 A1 tests passing; `docs/CONTRACT.md` written.
+- **In progress:** A2 — risk engine (`risk/engine.py`, `GET /api/segments/`)
+- **Blocked (waiting on whom/what):** `data/` files from C (stand-in fixture is live and working)
+- **Next:** A2 → A3 (ETA) → A4 (options) → A5 (service points)
+- **Endpoints available on `main`:** `GET /api/scenario/`, `POST /api/scenario/`, `GET /api/routes/`
 
 ## Member B: Frontend and Map
 - **Done:**
