@@ -8,11 +8,11 @@ Legend: Done / In progress / Blocked / Next.
 ---
 
 ## Member A: Backend and Risk Engine
-- **Done:** A1 complete — Django 5.2/DRF skeleton; all apps (risk, routing, servicepoints, weather stub, emergency stub); `safehaul/config.py` (all §1.11 constants); `safehaul/data_loader.py` (reads `data/`; falls back to `tests/fixtures/` with visible WARNING); `GET /api/scenario/`, `POST /api/scenario/`, `GET /api/routes/`; 19/19 A1 tests passing; `docs/CONTRACT.md` written.
-- **In progress:** A2 — risk engine (`risk/engine.py`, `GET /api/segments/`)
-- **Blocked (waiting on whom/what):** `data/` files from C (stand-in fixture is live and working)
-- **Next:** A2 → A3 (ETA) → A4 (options) → A5 (service points)
-- **Endpoints available on `main`:** `GET /api/scenario/`, `POST /api/scenario/`, `GET /api/routes/`
+- **Done:** A1–A5 complete — full backend live. Risk engine (`score_segment` with §1.11 formula, flood memory, overrides, confidence, reasons); ETA range with reason string, peak-hour + rest-break rules; route options hard filters (safety → shelf life → clearance P1 stub), `proceed/reroute/wait/divert_store` options, exactly-one `recommended`; service-point reachability ranking (`reachable=false` with reason for blocked hospitals); 48/48 tests passing.
+- **In progress:** —
+- **Blocked (waiting on whom/what):** `data/` files from C (stand-in fixture is live; loader auto-switches when C delivers)
+- **Next:** A6 stretch (fleet endpoint) after demo stabilisation; wire weather client when C delivers
+- **Endpoints available on `main`:** `GET /api/scenario/`, `POST /api/scenario/`, `GET /api/routes/`, `GET /api/segments/`, `POST /api/trip/options/`, `GET /api/service-points/`
 
 ## Member B: Frontend and Map
 - **Done:** B0 (sample JSON — all 6 files, full contract), B1 (base template, Leaflet map, SIMULATED banner, language toggle, config/api/i18n scaffold, standalone Django project)

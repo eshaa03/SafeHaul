@@ -1,4 +1,6 @@
 from django.urls import path
+from routing.views import TripOptionsView
 
-# /api/trip/options/ is registered in A4
-urlpatterns = []
+urlpatterns = [
+    path("trip/options/", TripOptionsView.as_view(), name="trip-options"),
+]
