@@ -1,0 +1,55 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.tox/
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.sqlite3
+*.db
+backend/.env
+backend/staticfiles/
+backend/media/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.hypothesis/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Node (in case frontend tooling is added later)
+node_modules/
+npm-debug.log*
+
+# Compiled frontend assets (if added later)
+frontend/static/dist/
+
+# Secrets
+*.env
+.env.*
+!.env.example
+secrets.json
+
+# OS
+ehthumbs.db
+Desktop.ini
