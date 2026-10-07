@@ -1,75 +1,46 @@
 """
-SafeHaul Kerala — Django settings.
+Minimal Django settings for the SafeHaul emergency app (Member D standalone).
 
-Secrets are read from environment variables (or a .env file).
-Copy backend/.env.example to backend/.env and fill in values.
-Never commit .env to the repository.
+When Member A delivers the full safehaul/ Django project, this file becomes
+redundant — A's settings.py will install 'emergency' in INSTALLED_APPS instead.
+
+Nothing in this file should conflict with A's settings; it is purely additive.
 """
-
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
+BASE_DIR = Path(__file__).resolve().parent.parent  # backend/
 
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
-# BASE_DIR is the backend/ directory (where manage.py lives).
-BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Load .env from backend/.env if it exists (silently ignored if absent).
-load_dotenv(BASE_DIR / ".env")
-
-# Repo root is one level above backend/.
-REPO_ROOT = BASE_DIR.parent
-
-# ---------------------------------------------------------------------------
-# Security
-# ---------------------------------------------------------------------------
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY",
-    "django-insecure-safehaul-dev-key-change-before-deploy",
+    "DJANGO_SECRET_KEY",
+    "dev-only-insecure-key-change-in-production",
 )
 
-DEBUG = os.environ.get("DEBUG", "True").lower() in ("true", "1", "yes")
+DEBUG = os.environ.get("DJANGO_DEBUG", "1") == "1"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS = ["*"]
 
-# ---------------------------------------------------------------------------
-# Application definition
-# ---------------------------------------------------------------------------
+USE_TZ = True
+TIME_ZONE = "Asia/Kolkata"
+
 INSTALLED_APPS = [
-    # Django core
     "django.contrib.contenttypes",
     "django.contrib.auth",
-    "django.contrib.staticfiles",
-    # Third-party
     "rest_framework",
-    # SafeHaul apps (A owns)
-    "safehaul.apps.SafehaulConfig",
-    "risk.apps.RiskConfig",
-    "routing.apps.RoutingConfig",
-    "servicepoints.apps.ServicePointsConfig",
-    # Stubs (teammates fill in)
-    "weather.apps.WeatherConfig",
-    "emergency.apps.EmergencyConfig",
+    "emergency",
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
     "django.middleware.common.CommonMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
 ROOT_URLCONF = "safehaul.urls"
 
-# ---------------------------------------------------------------------------
-# Templates — serve from frontend/templates/
-# ---------------------------------------------------------------------------
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [REPO_ROOT / "frontend" / "templates"],
+        # Allow app-level templates (emergency/templates/)
+        "DIRS": [],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -79,12 +50,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = "safehaul.wsgi.application"
-ASGI_APPLICATION = "safehaul.asgi.application"
-
-# ---------------------------------------------------------------------------
-# Database — SQLite for the MVP
-# ---------------------------------------------------------------------------
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -92,18 +57,10 @@ DATABASES = {
     }
 }
 
-# ---------------------------------------------------------------------------
-# Static files — served from frontend/static/
-# ---------------------------------------------------------------------------
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [
-    REPO_ROOT / "frontend" / "static",
-]
-STATIC_ROOT = BASE_DIR / "staticfiles"  # collectstatic target (deployment)
 
-# ---------------------------------------------------------------------------
-# Django REST Framework
-# ---------------------------------------------------------------------------
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
@@ -111,53 +68,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
     ],
-    # No session/token auth needed for this demo API.
-    "DEFAULT_AUTHENTICATION_CLASSES": [],
-    "DEFAULT_PERMISSION_CLASSES": [],
 }
 
-# ---------------------------------------------------------------------------
-# Internationalisation
-# ---------------------------------------------------------------------------
-LANGUAGE_CODE = "en-us"
-TIME_ZONE = "Asia/Kolkata"
-USE_I18N = True
-USE_TZ = True
-
-# ---------------------------------------------------------------------------
-# Data directory
-# The loader tries DATA_DIR first, then falls back to the stand-in fixture.
-# ---------------------------------------------------------------------------
-DATA_DIR = Path(os.environ.get("DATA_DIR", str(REPO_ROOT / "data")))
-
-# ---------------------------------------------------------------------------
-# Default auto field
-# ---------------------------------------------------------------------------
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# ---------------------------------------------------------------------------
-# Logging — show a warning when running on stand-in fixture data
-# ---------------------------------------------------------------------------
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "simple": {"format": "[%(levelname)s] %(name)s: %(message)s"},
-    },
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-            "formatter": "simple",
-        },
-    },
-    "root": {
-        "handlers": ["console"],
-        "level": "INFO",
-    },
-    "loggers": {
-        "safehaul": {"handlers": ["console"], "level": "INFO", "propagate": False},
-        "risk": {"handlers": ["console"], "level": "INFO", "propagate": False},
-        "routing": {"handlers": ["console"], "level": "INFO", "propagate": False},
-        "servicepoints": {"handlers": ["console"], "level": "INFO", "propagate": False},
-    },
-}
+# Path to data/ directory (two levels up from backend/)
+DATA_DIR = BASE_DIR.parent / "data"

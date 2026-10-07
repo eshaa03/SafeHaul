@@ -1,1 +1,1 @@
-# emergency stub — owned by Member D
+# backend/emergency/__init__.py

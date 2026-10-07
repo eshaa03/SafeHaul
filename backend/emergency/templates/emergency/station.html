@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeHaul Kerala — Station Dashboard</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'emergency/station.css' %}">
+  <!-- Leaflet: bundled locally (no CDN) — Member B places it in frontend/static/vendor/leaflet/;
+       until that lands, we load it inline via a data-URI stub that renders nothing but does not crash. -->
+  <link rel="stylesheet" href="{% static 'vendor/leaflet/leaflet.css' %}"
+        onerror="this.disabled=true">
+</head>
+<body>
+  <header>
+    <h1>SafeHaul Kerala — Station Dashboard</h1>
+    <div id="sim-banner" class="sim-banner" hidden>⚠ SIMULATED RADIO LINK — no real hardware connected</div>
+    <div id="conn-status" class="conn-status ok">● Connected</div>
+  </header>
+
+  <main>
+    <section id="event-list" aria-live="polite" aria-label="Emergency events">
+      <p id="empty-msg" class="empty-msg">No emergency events yet.</p>
+    </section>
+  </main>
+
+  <footer>SafeHaul Kerala • Station Dashboard • v1 (Member D)</footer>
+
+  <!-- Code table injected server-side — no extra fetch needed, works offline -->
+  <script>
+    var CODES = {{ codes_json|safe }};
+  </script>
+
+  <script src="{% static 'vendor/leaflet/leaflet.js' %}"
+          onerror="window.L=null"></script>
+  <script src="{% static 'emergency/station.js' %}"></script>
+</body>
+</html>

@@ -35,11 +35,18 @@ Legend: Done / In progress / Blocked / Next.
 - **Data files on `main`:** `data/segments.json`, `data/routes.json`, `data/scenarios.json`, `data/service_points.json`, `data/vehicles.json`, `data/emergency_codes.json`, `data/SOURCES.md`
 
 ## Member D: Hardware and Emergency Communication
-- **Done:** 2026-10-08: D1 complete — hardware/README.md written, LoRa India band settings documented (865.2 MHz SF7 14 dBm), packet formats specified, simulation fallback declared, QUESTIONS.md updated for hardware sourcing.
-- **In progress:** D2 firmware (blocked on board model confirmation from E).
-- **Blocked (waiting on whom/what):** Physical boards not yet confirmed. Waiting for E to respond to QUESTIONS.md re sourcing. Also waiting for A to merge Django skeleton before D6 (emergency app) can be wired.
-- **Next:** D4 simulation path (truck_sim.py + gateway_sim.py) — unblocked; D6 Django emergency app — unblocked once A merges skeleton.
-- **Hardware on hand:** None confirmed yet. Target: 2× Heltec WiFi LoRa 32 V2 + antennas + 1× GPS module. Fallback: software simulation (full loop on one laptop).
+- **Done:**
+  - D1: hardware/README.md, LoRa India band settings (865.2 MHz SF7 14 dBm), packet formats, simulation fallback, QUESTIONS.md updated.
+  - D4: Simulation fallback — hardware/firmware/sim/ (truck_sim.py, gateway_sim.py, config.py, README.md). Full SOS→ACK loop on one laptop, no boards needed.
+  - D6: Django emergency app — backend/emergency/ (models, serializers, views, urls, templates, static). POST /api/emergency/, GET /api/emergency/?since=, POST /api/emergency/<id>/ack/ all working. /station/ dashboard (2 s poll, Web Audio beep, Acknowledge button). /sos-demo/ truck simulator page.
+  - D6: data/emergency_codes.json (codes 01–07, English + Malayalam text, severity).
+  - D7: 5 tests in backend/tests/test_emergency.py — all passing.
+- **In progress:** —
+- **Blocked (waiting on whom/what):**
+  - Physical boards not yet confirmed (E has QUESTIONS.md item).
+  - bridge.py (D5) and URL conf wiring waiting on A's Django skeleton merge to main.
+- **Next:** Wire emergency URLs into A's safehaul/urls.py once skeleton lands. D5 gateway bridge when boards confirmed.
+- **Hardware on hand:** None confirmed yet. Target: 2× Heltec WiFi LoRa 32 V2 + antennas + 1× GPS. Fallback: software simulation (full loop on one laptop, labelled "SIMULATED RADIO LINK").
 
 ## Member E: Product, Pitch and QA
 - **Done:**

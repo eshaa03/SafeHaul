@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeHaul Kerala — SOS Demo (Truck Simulator)</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'emergency/station.css' %}">
+  <style>
+    /* Additional styles specific to the SOS demo page */
+    .demo-note {
+      background: #1a1a2e;
+      border: 2px solid #e74c3c;
+      color: #f0f0f0;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .code-btn {
+      display: inline-block;
+      margin: 6px;
+      padding: 14px 20px;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      min-width: 180px;
+      text-align: left;
+    }
+    .code-btn.sev-critical { background: #c0392b; color: #fff; }
+    .code-btn.sev-high     { background: #e67e22; color: #fff; }
+    .code-btn.sev-medium   { background: #f39c12; color: #1a1a2e; }
+    .code-btn.sev-low      { background: #27ae60; color: #fff; }
+    .code-btn:disabled     { opacity: 0.5; cursor: not-allowed; }
+    #ack-status {
+      margin-top: 24px;
+      padding: 16px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 4px;
+      display: none;
+    }
+    #ack-status.received  { background: #27ae60; color: #fff; }
+    #ack-status.waiting   { background: #2c3e50; color: #ecf0f1; }
+    #ack-status.failed    { background: #7f8c8d; color: #fff; }
+    #seq-display { font-size: 12px; color: #888; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>SafeHaul Kerala — Truck SOS Simulator</h1>
+    <div class="sim-banner">
+      ⚠ SIMULATED RADIO LINK — this page simulates the truck device sending a LoRa packet
+    </div>
+  </header>
+
+  <main>
+    <div class="demo-note">
+      <strong>How it works:</strong> Press a code button below. This POSTs to
+      <code>/api/emergency/</code> exactly as a real LoRa device would.
+      Then open <a href="/station/" style="color:#5dade2">/station/</a> in another
+      tab (or on a second screen) and click <strong>Acknowledge</strong>.
+      This page polls for the ACK and shows "RECEIVED by Station 1" when it arrives.
+    </div>
+
+    <div id="btn-grid">
+      {% for c in codes_list %}
+      <button
+        class="code-btn sev-{{ c.severity }}"
+        data-code="{{ c.code }}"
+        onclick="sendCode('{{ c.code }}')"
+        title="Code {{ c.code }}">
+        [{{ c.code }}] {{ c.en }}
+      </button>
+      {% endfor %}
+    </div>
+
+    <div id="seq-display">Sequence: <span id="seq-val">0</span></div>
+
+    <div id="ack-status" role="status"></div>
+  </main>
+
+  <footer>SafeHaul Kerala • SOS Demo Page • Member D</footer>
+
+  <script>
+    var CODES = {{ codes_json|safe }};
+    var vehicleId = 17;
+    var stationId = 1;
+    var seq = 0;
+    var pollTimer = null;
+    var currentEventId = null;
+
+    function sendCode(code) {
+      seq = (seq + 1) & 0xFF;
+      document.getElementById('seq-val').textContent = seq;
+
+      // Disable all buttons while waiting for ACK
+      document.querySelectorAll('.code-btn').forEach(function(b){ b.disabled = true; });
+
+      var statusEl = document.getElementById('ack-status');
+      statusEl.className = 'waiting';
+      statusEl.textContent = 'Sending code ' + code + ' … waiting for station ACK';
+      statusEl.style.display = 'block';
+
+      var body = {
+        code: code,
+        vehicle_id: vehicleId,
+        seq: seq,
+        lat: 10.30660,
+        lng: 76.33180,
+        device_ts: new Date().toISOString(),
+        via: 'sim',
+        station_id: stationId
+      };
+
+      fetch('/api/emergency/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(body)
+      })
+      .then(function(r){ return r.json(); })
+      .then(function(data) {
+        if (data.id) {
+          currentEventId = data.id;
+          // If already acked (duplicate), show result immediately
+          if (data.status === 'acked') {
+            showAcked(stationId);
+          } else {
+            pollForAck(data.id);
+          }
+        } else {
+          showFailed('API error: ' + JSON.stringify(data));
+        }
+      })
+      .catch(function(err){ showFailed('Network error: ' + err); });
+    }
+
+    function pollForAck(eventId) {
+      var attempts = 0;
+      var maxAttempts = 20; // 20 × 1.5 s = 30 s timeout
+
+      function check() {
+        fetch('/api/emergency/?since=1970-01-01T00:00:00Z')
+          .then(function(r){ return r.json(); })
+          .then(function(events) {
+            var ev = events.find(function(e){ return e.id === eventId; });
+            if (ev && ev.status === 'acked') {
+              showAcked(ev.station_id);
+              return;
+            }
+            attempts++;
+            if (attempts >= maxAttempts) {
+              showFailed('No ACK received after 30 s. Station may be offline.');
+              return;
+            }
+            pollTimer = setTimeout(check, 1500);
+          })
+          .catch(function(){ pollTimer = setTimeout(check, 1500); });
+      }
+      check();
+    }
+
+    function showAcked(sid) {
+      clearTimeout(pollTimer);
+      var el = document.getElementById('ack-status');
+      el.className = 'received';
+      el.textContent = '✓ RECEIVED by Station ' + sid + '   [SIMULATED RADIO LINK]';
+      el.style.display = 'block';
+      document.querySelectorAll('.code-btn').forEach(function(b){ b.disabled = false; });
+    }
+
+    function showFailed(msg) {
+      clearTimeout(pollTimer);
+      var el = document.getElementById('ack-status');
+      el.className = 'failed';
+      el.textContent = '✗ ' + msg;
+      el.style.display = 'block';
+      document.querySelectorAll('.code-btn').forEach(function(b){ b.disabled = false; });
+    }
+  </script>
+</body>
+</html>
