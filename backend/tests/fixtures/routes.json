@@ -1,0 +1,16 @@
+[
+  {
+    "route_id": "main",
+    "name": "Main route via Thrissur–Chalakudy (illustrative)",
+    "segment_ids": ["S-01", "S-02", "S-03"],
+    "distance_km": 80.7,
+    "data_source": "simulated"
+  },
+  {
+    "route_id": "alt1",
+    "name": "Alternate via Irinjalakuda–Kodungallur (illustrative)",
+    "segment_ids": ["S-01", "S-04", "S-05"],
+    "distance_km": 125.5,
+    "data_source": "simulated"
+  }
+]

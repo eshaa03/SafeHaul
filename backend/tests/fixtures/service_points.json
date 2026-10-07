@@ -1,0 +1,69 @@
+[
+  {
+    "id": "H-01",
+    "name": "Thrissur District Hospital (illustrative)",
+    "category": "hospital",
+    "lat": 10.528,
+    "lng": 76.214,
+    "attach_segment_id": "S-02",
+    "detour_minutes": 8,
+    "last_verified": "2026-10-01",
+    "data_source": "simulated"
+  },
+  {
+    "id": "H-02",
+    "name": "Irinjalakuda Taluk Hospital (illustrative)",
+    "category": "hospital",
+    "lat": 10.340,
+    "lng": 76.210,
+    "attach_segment_id": "S-04",
+    "detour_minutes": 5,
+    "last_verified": "2026-10-01",
+    "data_source": "simulated"
+  },
+  {
+    "id": "F-01",
+    "name": "Thrissur Fuel Station (illustrative)",
+    "category": "fuel",
+    "lat": 10.530,
+    "lng": 76.220,
+    "attach_segment_id": "S-02",
+    "detour_minutes": 3,
+    "last_verified": "2026-10-01",
+    "data_source": "simulated"
+  },
+  {
+    "id": "P-01",
+    "name": "Vadakkencherry Police Station (illustrative)",
+    "category": "police",
+    "lat": 10.600,
+    "lng": 76.480,
+    "attach_segment_id": "S-01",
+    "detour_minutes": 4,
+    "last_verified": "2026-10-01",
+    "data_source": "simulated"
+  },
+  {
+    "id": "CS-01",
+    "name": "Irinjalakuda Cold Store (illustrative, capacity: SIMULATED)",
+    "category": "cold_store",
+    "lat": 10.342,
+    "lng": 76.212,
+    "attach_segment_id": "S-04",
+    "detour_minutes": 10,
+    "capacity_status": "available",
+    "last_verified": "2026-10-01",
+    "data_source": "simulated"
+  },
+  {
+    "id": "SH-01",
+    "name": "Elevated Rest Point — Kodungallur Highway (illustrative)",
+    "category": "safe_halt",
+    "lat": 10.230,
+    "lng": 76.190,
+    "attach_segment_id": "S-05",
+    "detour_minutes": 2,
+    "last_verified": "2026-10-01",
+    "data_source": "simulated"
+  }
+]

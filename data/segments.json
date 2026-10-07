@@ -1,0 +1,807 @@
+[
+  {
+    "segment_id": "M-01",
+    "name": "Palakkad to Walayar (NH 544 start)",
+    "route_ids": [
+      "main",
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.787,
+        76.655
+      ],
+      [
+        10.76,
+        76.62
+      ],
+      [
+        10.738,
+        76.595
+      ],
+      [
+        10.716,
+        76.571
+      ],
+      [
+        10.695,
+        76.548
+      ],
+      [
+        10.672,
+        76.523
+      ]
+    ],
+    "length_km": 19.29,
+    "road_class": "highway",
+    "elevation_m": 78,
+    "river_distance_m": 2400,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-02",
+    "name": "Walayar to Vadakkencherry (Ghats foothills)",
+    "route_ids": [
+      "main",
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.672,
+        76.523
+      ],
+      [
+        10.648,
+        76.508
+      ],
+      [
+        10.628,
+        76.496
+      ],
+      [
+        10.609,
+        76.483
+      ],
+      [
+        10.595,
+        76.472
+      ],
+      [
+        10.578,
+        76.459
+      ]
+    ],
+    "length_km": 12.59,
+    "road_class": "highway",
+    "elevation_m": 52,
+    "river_distance_m": 1800,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-03",
+    "name": "Vadakkencherry to Thrissur approach (Bharathapuzha floodplain)",
+    "route_ids": [
+      "main",
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.578,
+        76.459
+      ],
+      [
+        10.563,
+        76.44
+      ],
+      [
+        10.549,
+        76.418
+      ],
+      [
+        10.538,
+        76.395
+      ],
+      [
+        10.53,
+        76.37
+      ],
+      [
+        10.525,
+        76.34
+      ],
+      [
+        10.522,
+        76.31
+      ]
+    ],
+    "length_km": 17.82,
+    "road_class": "highway",
+    "elevation_m": 28,
+    "river_distance_m": 350,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-04",
+    "name": "Thrissur city section (NH 544 bypass, urban)",
+    "route_ids": [
+      "main",
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.522,
+        76.31
+      ],
+      [
+        10.516,
+        76.284
+      ],
+      [
+        10.51,
+        76.265
+      ],
+      [
+        10.505,
+        76.25
+      ],
+      [
+        10.5,
+        76.234
+      ]
+    ],
+    "length_km": 8.67,
+    "road_class": "highway",
+    "elevation_m": 22,
+    "river_distance_m": 900,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-05",
+    "name": "Thrissur south to Irinjalakuda junction",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.5,
+        76.234
+      ],
+      [
+        10.483,
+        76.248
+      ],
+      [
+        10.461,
+        76.258
+      ],
+      [
+        10.438,
+        76.268
+      ],
+      [
+        10.415,
+        76.276
+      ],
+      [
+        10.395,
+        76.285
+      ]
+    ],
+    "length_km": 13.03,
+    "road_class": "highway",
+    "elevation_m": 18,
+    "river_distance_m": 700,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-06",
+    "name": "Irinjalakuda to Chalakudy approach",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.395,
+        76.285
+      ],
+      [
+        10.372,
+        76.298
+      ],
+      [
+        10.352,
+        76.308
+      ],
+      [
+        10.335,
+        76.316
+      ],
+      [
+        10.32,
+        76.322
+      ]
+    ],
+    "length_km": 9.28,
+    "road_class": "highway",
+    "elevation_m": 14,
+    "river_distance_m": 420,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-07",
+    "name": "Chalakudy river crossing (NH 544 Chalakudy bridge)",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.32,
+        76.322
+      ],
+      [
+        10.314,
+        76.328
+      ],
+      [
+        10.308,
+        76.332
+      ],
+      [
+        10.3,
+        76.336
+      ],
+      [
+        10.291,
+        76.34
+      ]
+    ],
+    "length_km": 3.82,
+    "road_class": "highway",
+    "elevation_m": 8,
+    "river_distance_m": 30,
+    "historical_flood_count": 2,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-08",
+    "name": "Chalakudy to Angamaly (NH 544 through Kodungallur road junction)",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.291,
+        76.34
+      ],
+      [
+        10.278,
+        76.346
+      ],
+      [
+        10.264,
+        76.354
+      ],
+      [
+        10.252,
+        76.361
+      ],
+      [
+        10.238,
+        76.368
+      ],
+      [
+        10.224,
+        76.374
+      ],
+      [
+        10.21,
+        76.381
+      ]
+    ],
+    "length_km": 10.07,
+    "road_class": "highway",
+    "elevation_m": 10,
+    "river_distance_m": 800,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-09",
+    "name": "Angamaly junction underpass (NH 544 grade-separation)",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.21,
+        76.381
+      ],
+      [
+        10.205,
+        76.384
+      ],
+      [
+        10.199,
+        76.387
+      ],
+      [
+        10.193,
+        76.39
+      ]
+    ],
+    "length_km": 2.13,
+    "road_class": "highway",
+    "elevation_m": 7,
+    "river_distance_m": 1100,
+    "historical_flood_count": 1,
+    "hazard_type": "underpass",
+    "data_source": "historical",
+    "clearance_m": 4.5
+  },
+  {
+    "segment_id": "M-10",
+    "name": "Angamaly to Aluva approach (NH 544)",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.193,
+        76.39
+      ],
+      [
+        10.18,
+        76.377
+      ],
+      [
+        10.167,
+        76.369
+      ],
+      [
+        10.153,
+        76.36
+      ],
+      [
+        10.14,
+        76.357
+      ]
+    ],
+    "length_km": 7.04,
+    "road_class": "highway",
+    "elevation_m": 6,
+    "river_distance_m": 500,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-11",
+    "name": "Aluva Periyar river crossing (Edapally Bridge / NH 544)",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.14,
+        76.357
+      ],
+      [
+        10.128,
+        76.354
+      ],
+      [
+        10.112,
+        76.352
+      ],
+      [
+        10.1,
+        76.357
+      ],
+      [
+        10.088,
+        76.358
+      ]
+    ],
+    "length_km": 5.95,
+    "road_class": "highway",
+    "elevation_m": 4,
+    "river_distance_m": 15,
+    "historical_flood_count": 2,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "M-12",
+    "name": "Aluva to Kochi (Edapally, NH 544 Kochi bypass)",
+    "route_ids": [
+      "main"
+    ],
+    "geometry": [
+      [
+        10.088,
+        76.358
+      ],
+      [
+        10.074,
+        76.356
+      ],
+      [
+        10.063,
+        76.355
+      ],
+      [
+        10.052,
+        76.34
+      ],
+      [
+        10.04,
+        76.325
+      ],
+      [
+        10.025,
+        76.31
+      ],
+      [
+        9.99,
+        76.29
+      ],
+      [
+        9.96,
+        76.275
+      ],
+      [
+        9.931,
+        76.267
+      ]
+    ],
+    "length_km": 20.83,
+    "road_class": "highway",
+    "elevation_m": 3,
+    "river_distance_m": 1200,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-01",
+    "name": "Thrissur to Irinjalakuda (SH 15 / old NH 47 alignment)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.5,
+        76.234
+      ],
+      [
+        10.48,
+        76.22
+      ],
+      [
+        10.46,
+        76.21
+      ],
+      [
+        10.44,
+        76.205
+      ],
+      [
+        10.42,
+        76.205
+      ],
+      [
+        10.4,
+        76.208
+      ],
+      [
+        10.38,
+        76.213
+      ]
+    ],
+    "length_km": 14.23,
+    "road_class": "state_road",
+    "elevation_m": 20,
+    "river_distance_m": 600,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-02",
+    "name": "Irinjalakuda to Kodungallur (SH 15, coastal approach)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.38,
+        76.213
+      ],
+      [
+        10.36,
+        76.21
+      ],
+      [
+        10.338,
+        76.21
+      ],
+      [
+        10.315,
+        76.21
+      ],
+      [
+        10.293,
+        76.21
+      ],
+      [
+        10.27,
+        76.21
+      ],
+      [
+        10.248,
+        76.208
+      ],
+      [
+        10.228,
+        76.207
+      ]
+    ],
+    "length_km": 16.94,
+    "road_class": "state_road",
+    "elevation_m": 12,
+    "river_distance_m": 900,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-03",
+    "name": "Kodungallur town (SH 15, Periyar estuary area)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.228,
+        76.207
+      ],
+      [
+        10.22,
+        76.21
+      ],
+      [
+        10.213,
+        76.214
+      ],
+      [
+        10.205,
+        76.218
+      ],
+      [
+        10.196,
+        76.22
+      ]
+    ],
+    "length_km": 3.86,
+    "road_class": "state_road",
+    "elevation_m": 5,
+    "river_distance_m": 250,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-04",
+    "name": "Kodungallur to North Paravur (coastal road, low-lying)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.196,
+        76.22
+      ],
+      [
+        10.18,
+        76.22
+      ],
+      [
+        10.163,
+        76.22
+      ],
+      [
+        10.146,
+        76.22
+      ],
+      [
+        10.128,
+        76.222
+      ],
+      [
+        10.112,
+        76.224
+      ],
+      [
+        10.095,
+        76.226
+      ],
+      [
+        10.075,
+        76.228
+      ]
+    ],
+    "length_km": 13.5,
+    "road_class": "state_road",
+    "elevation_m": 4,
+    "river_distance_m": 400,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-05",
+    "name": "North Paravur (SH 15 / MDR junction)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.075,
+        76.228
+      ],
+      [
+        10.06,
+        76.23
+      ],
+      [
+        10.048,
+        76.233
+      ],
+      [
+        10.038,
+        76.238
+      ]
+    ],
+    "length_km": 4.3,
+    "road_class": "state_road",
+    "elevation_m": 6,
+    "river_distance_m": 700,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-06",
+    "name": "North Paravur to Aluva connector (MDR / Koonammavu road)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.038,
+        76.238
+      ],
+      [
+        10.03,
+        76.248
+      ],
+      [
+        10.025,
+        76.26
+      ],
+      [
+        10.02,
+        76.272
+      ],
+      [
+        10.016,
+        76.284
+      ],
+      [
+        10.013,
+        76.296
+      ]
+    ],
+    "length_km": 7.01,
+    "road_class": "state_road",
+    "elevation_m": 5,
+    "river_distance_m": 1100,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-07",
+    "name": "Koonammavu to Edapally (NH 544 / NH 66 interchange approach)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        10.013,
+        76.296
+      ],
+      [
+        10.01,
+        76.302
+      ],
+      [
+        10.007,
+        76.305
+      ],
+      [
+        9.998,
+        76.3
+      ],
+      [
+        9.99,
+        76.291
+      ],
+      [
+        9.98,
+        76.282
+      ]
+    ],
+    "length_km": 5.16,
+    "road_class": "state_road",
+    "elevation_m": 4,
+    "river_distance_m": 1500,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  },
+  {
+    "segment_id": "A-08",
+    "name": "Edapally to Kochi city centre (NH 66 / Seaport-Airport Road)",
+    "route_ids": [
+      "alt1"
+    ],
+    "geometry": [
+      [
+        9.98,
+        76.282
+      ],
+      [
+        9.97,
+        76.278
+      ],
+      [
+        9.96,
+        76.274
+      ],
+      [
+        9.95,
+        76.271
+      ],
+      [
+        9.94,
+        76.268
+      ],
+      [
+        9.931,
+        76.267
+      ]
+    ],
+    "length_km": 5.72,
+    "road_class": "state_road",
+    "elevation_m": 3,
+    "river_distance_m": 1800,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "historical"
+  }
+]
