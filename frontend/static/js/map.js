@@ -1,34 +1,33 @@
 /**
- * SafeHaul Kerala — map module (B1)
+ * SafeHaul Kerala — map module
  *
- * Responsibilities (B1 scope):
- *   - Initialise a Leaflet map centred on the Palakkad–Kochi corridor.
- *   - Load routes and segments from SafehaulAPI (sample JSON or real).
- *   - Draw route polylines (thin background line per route).
- *   - Draw segment polylines coloured by risk_level.
- *   - Show/hide SIMULATED DATA banner based on data_source.
- *   - Update data-freshness indicator in the header.
- *   - Graceful tile-failure notice.
+ * Responsibilities:
+ *   - Leaflet map init centred on Palakkad–Kochi corridor.
+ *   - Draw route polylines (background) and risk-coloured+patterned segment polylines.
+ *   - Segment click → open detail panel (risk, reasons, confidence, data age, source).
+ *   - Flood toggle: POST /api/scenario/ then reload all data.
+ *   - SIMULATED DATA banner, data-freshness indicator, tile-failure notice.
  *
- * B2 will add: patterns, popups, legend, click handlers.
- * B3 will add: flood toggle, scenario refresh.
- * Public surface used by later modules is noted with @public.
+ * Public API used by other modules:
+ *   MapApp.init()
+ *   MapApp.reload()
+ *   MapApp.highlightRoute(routeId)
+ *   MapApp.setWindowOpacity(keptIds, releasedIds)
  */
 
 const MapApp = (() => {
 
   /* ── state ──────────────────────────────────────────────────────────── */
-  let _map = null;
-  let _segmentLayers = {};   // segment_id → Leaflet polyline
-  let _routeLayers = {};     // route id  → Leaflet polyline (background)
-  let _segments = [];        // last-loaded segment objects
-  let _routes = [];          // last-loaded route objects
-  let _loadedAt = null;      // Date of last successful data load
+  let _map          = null;
+  let _segmentLayers = {};    // segment_id → Leaflet polyline
+  let _routeLayers   = {};    // route id   → Leaflet polyline (background)
+  let _segments      = [];
+  let _routes        = [];
+  let _loadedAt      = null;
+  let _isFlood       = false;
 
-  /* ── Leaflet icon path fix (bundled vendor) ─────────────────────────── */
+  /* ── Leaflet icon fix ────────────────────────────────────────────────── */
   function _fixLeafletIconPaths() {
-    // Leaflet auto-detects icon paths from its own script tag URL, which
-    // fails when the file is served from a custom vendor path.
     delete L.Icon.Default.prototype._getIconUrl;
     L.Icon.Default.mergeOptions({
       iconUrl:       '/static/vendor/leaflet/images/marker-icon.png',
@@ -37,97 +36,92 @@ const MapApp = (() => {
     });
   }
 
-  /* ── risk colour ────────────────────────────────────────────────────── */
-  function _colourForRisk(level) {
-    return SAFEHAUL_CONFIG.RISK_COLOURS[level] || SAFEHAUL_CONFIG.RISK_COLOURS.low;
+  /* ── simulated banner ────────────────────────────────────────────────── */
+  function _updateSimulatedBanner(items) {
+    var hasSim = items.some(function (x) { return x && x.data_source === 'simulated'; });
+    if (hasSim) document.body.classList.add('simulated-active');
   }
 
-  /* ── simulated-data banner ──────────────────────────────────────────── */
-  function _updateSimulatedBanner(dataItems) {
-    // dataItems: array of objects that may have a data_source field.
-    var hasSimulated = dataItems.some(function (item) {
-      return item && item.data_source === 'simulated';
-    });
-    if (hasSimulated) {
-      document.body.classList.add('simulated-active');
-    }
-    // We never remove the banner once shown — simulated data stays flagged.
-  }
-
-  /* ── data-freshness indicator ───────────────────────────────────────── */
+  /* ── freshness indicator ─────────────────────────────────────────────── */
   function _updateFreshness() {
     var el = document.getElementById('data-freshness');
     if (!el || !_loadedAt) return;
-    var minutesAgo = Math.round((Date.now() - _loadedAt) / 60000);
-    var label = t('header.data_freshness') + ' ' + minutesAgo + ' min ' + t('header.data_ago');
-    el.textContent = label;
+    var mins = Math.round((Date.now() - _loadedAt) / 60000);
+    el.textContent = t('header.data_freshness') + ' ' + mins + ' min ' + t('header.data_ago');
   }
 
-  /* ── tile-failure handling ──────────────────────────────────────────── */
+  /* ── tile error ──────────────────────────────────────────────────────── */
   function _handleTileError() {
-    var notice = document.getElementById('map-no-tiles');
-    if (notice) notice.hidden = false;
+    var n = document.getElementById('map-no-tiles');
+    if (n) n.hidden = false;
   }
 
-  /* ── draw routes (background polylines) ────────────────────────────── */
+  /* ── segment panel ───────────────────────────────────────────────────── */
+  function _openSegmentPanel(seg) {
+    var container = document.getElementById('seg-panel-container');
+    if (!container) return;
+    container.innerHTML = Risk.renderSegmentPanel(seg);
+    container.hidden = false;
+    var closeBtn = document.getElementById('seg-panel-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        container.hidden = true;
+      });
+    }
+  }
+
+  /* ── draw routes ─────────────────────────────────────────────────────── */
   function _drawRoutes(routes) {
-    // Build a lookup: segment_id → geometry from already-loaded segments
     var geomMap = {};
-    _segments.forEach(function (seg) {
-      geomMap[seg.segment_id] = seg.geometry;
-    });
+    _segments.forEach(function (s) { geomMap[s.segment_id] = s.geometry; });
 
     routes.forEach(function (route) {
-      // Concatenate all segment geometries in order
       var latlngs = [];
       (route.segment_ids || []).forEach(function (sid) {
-        var geom = geomMap[sid];
-        if (geom) latlngs = latlngs.concat(geom);
+        var g = geomMap[sid];
+        if (g) latlngs = latlngs.concat(g);
       });
       if (!latlngs.length) return;
 
       var poly = L.polyline(latlngs, {
-        color: '#94a3b8',    // slate-400 background line
-        weight: 8,
-        opacity: 0.25,
+        color: '#94a3b8', weight: 10, opacity: 0.20,
         className: 'route-line route-line--' + route.id,
       }).addTo(_map);
-
       poly.bindTooltip(route.name || route.id, { sticky: true, direction: 'top' });
       _routeLayers[route.id] = poly;
     });
   }
 
-  /* ── draw segments (risk-coloured polylines) ────────────────────────── */
+  /* ── draw segments ───────────────────────────────────────────────────── */
   function _drawSegments(segments) {
     segments.forEach(function (seg) {
       if (!seg.geometry || !seg.geometry.length) return;
 
-      var colour = _colourForRisk(seg.risk_level);
-      var poly = L.polyline(seg.geometry, {
-        color: colour,
-        weight: SAFEHAUL_CONFIG.RISK_WEIGHT,
-        opacity: 0.90,
-        className: 'segment-line segment-line--' + seg.risk_level,
-      }).addTo(_map);
+      var style = Risk.styleForRisk(seg);
+      style.className = 'segment-line segment-line--' + seg.risk_level;
+      var poly = L.polyline(seg.geometry, style).addTo(_map);
 
-      // Minimal tooltip for B1 — B2 will replace with full popup panel.
-      var riskLabel = t('risk.' + seg.risk_level) || seg.risk_level;
+      // Hover tooltip (quick label)
+      var icon  = Risk.ICONS[seg.risk_level] || '●';
+      var label = t('risk.' + seg.risk_level) || seg.risk_level;
       poly.bindTooltip(
-        '<strong>' + seg.name + '</strong><br>' + riskLabel,
+        '<span style="font-size:1.1em">' + icon + '</span> ' +
+        '<strong>' + seg.name + '</strong><br>' + label,
         { sticky: true, direction: 'top' }
       );
+
+      // Click → full detail panel
+      poly.on('click', function () { _openSegmentPanel(seg); });
 
       _segmentLayers[seg.segment_id] = poly;
     });
   }
 
-  /* ── load and render ────────────────────────────────────────────────── */
+  /* ── load & render ───────────────────────────────────────────────────── */
   async function _load() {
     var loadingEl = document.getElementById('map-loading');
 
     try {
-      // Fetch routes and segments in parallel.
       var [routes, segments] = await Promise.all([
         SafehaulAPI.getRoutes(),
         SafehaulAPI.getSegments(),
@@ -137,11 +131,8 @@ const MapApp = (() => {
       _segments = Array.isArray(segments) ? segments : [];
       _loadedAt = Date.now();
 
-      // Draw routes first (background), then segments on top.
       _drawRoutes(_routes);
       _drawSegments(_segments);
-
-      // Update simulated banner and freshness.
       _updateSimulatedBanner(_segments);
       _updateFreshness();
 
@@ -151,28 +142,45 @@ const MapApp = (() => {
       return;
     }
 
-    // Hide loading overlay once data is drawn.
     if (loadingEl) loadingEl.hidden = true;
   }
 
-  /* ── public API ─────────────────────────────────────────────────────── */
+  /* ── flood toggle ────────────────────────────────────────────────────── */
+  async function _toggleFlood() {
+    var btn = document.getElementById('flood-toggle');
+    _isFlood = !_isFlood;
+    var scenario = _isFlood ? 'flood' : 'normal';
 
-  /**
-   * @public
-   * Initialise the map. Called from map.html once the DOM is ready.
-   */
+    document.body.dataset.scenario = scenario;
+
+    if (btn) {
+      btn.setAttribute('aria-pressed', String(_isFlood));
+      btn.classList.toggle('flood-toggle--active', _isFlood);
+      btn.textContent = _isFlood ? '🌊 ' + t('flood.on') : '☀ ' + t('flood.off');
+    }
+
+    try {
+      await SafehaulAPI.setScenario(scenario);
+    } catch (_) {}
+
+    reload();
+
+    // Refresh hospitals and auto-run trip options on flood change
+    Service.loadHospitals({ scenario: scenario });
+  }
+
+  /* ── public ──────────────────────────────────────────────────────────── */
+
   function init() {
     _fixLeafletIconPaths();
 
     _map = L.map('map', {
-      center: SAFEHAUL_CONFIG.MAP_CENTER,
-      zoom:   SAFEHAUL_CONFIG.MAP_ZOOM,
+      center:  SAFEHAUL_CONFIG.MAP_CENTER,
+      zoom:    SAFEHAUL_CONFIG.MAP_ZOOM,
       minZoom: SAFEHAUL_CONFIG.MAP_ZOOM_MIN,
       maxZoom: SAFEHAUL_CONFIG.MAP_ZOOM_MAX,
-      zoomControl: true,
     });
 
-    // Tile layer — OSM; detect failures for the no-tile notice.
     var tileLayer = L.tileLayer(SAFEHAUL_CONFIG.TILE_URL, {
       attribution: SAFEHAUL_CONFIG.TILE_ATTRIBUTION,
       maxZoom: SAFEHAUL_CONFIG.MAP_ZOOM_MAX,
@@ -180,17 +188,14 @@ const MapApp = (() => {
     tileLayer.on('tileerror', _handleTileError);
     tileLayer.addTo(_map);
 
-    // Kick off data load.
     _load();
-
-    // Refresh freshness label every minute.
     setInterval(_updateFreshness, 60000);
+
+    // Flood toggle button
+    var btn = document.getElementById('flood-toggle');
+    if (btn) btn.addEventListener('click', _toggleFlood);
   }
 
-  /**
-   * @public — used by B3 to reload after scenario change.
-   * Clears all drawn layers and re-fetches from the API.
-   */
   function reload() {
     Object.values(_segmentLayers).forEach(function (p) { _map.removeLayer(p); });
     Object.values(_routeLayers).forEach(function (p)  { _map.removeLayer(p); });
@@ -198,32 +203,27 @@ const MapApp = (() => {
     _routeLayers   = {};
     _segments      = [];
     _routes        = [];
+    // Close any open segment panel
+    var panel = document.getElementById('seg-panel-container');
+    if (panel) panel.hidden = true;
     _load();
   }
 
-  /**
-   * @public — used by B4 to highlight a selected route.
-   * routeId: string matching route.id in routes.json.
-   */
   function highlightRoute(routeId) {
     Object.entries(_routeLayers).forEach(function ([id, poly]) {
-      poly.setStyle({ opacity: id === routeId ? 0.8 : 0.1 });
+      poly.setStyle({ opacity: id === routeId ? 0.7 : 0.08 });
     });
     Object.entries(_segmentLayers).forEach(function ([sid, poly]) {
-      // Find the segment to check which routes it belongs to.
       var seg = _segments.find(function (s) { return s.segment_id === sid; });
-      var onSelectedRoute = seg && seg.route_ids && seg.route_ids.includes(routeId);
-      poly.setStyle({ opacity: onSelectedRoute ? 0.9 : 0.25 });
+      var onRoute = seg && seg.route_ids && seg.route_ids.includes(routeId);
+      poly.setStyle({ opacity: onRoute ? 0.95 : 0.20 });
     });
   }
 
-  /**
-   * @public — used by B6 for offline window simulation.
-   */
   function setWindowOpacity(keptIds, releasedIds) {
-    var keptSet = new Set(keptIds);
+    var kept = new Set(keptIds);
     Object.entries(_segmentLayers).forEach(function ([sid, poly]) {
-      poly.setStyle({ opacity: keptSet.has(sid) ? 0.9 : 0.2 });
+      poly.setStyle({ opacity: kept.has(sid) ? 0.95 : 0.18 });
     });
   }
 

@@ -1,4 +1,8 @@
 {
+  "flood": {
+    "off": "Simulate Flood",
+    "on":  "Flood Active — click to clear"
+  },
   "app": {
     "name": "SafeHaul Kerala",
     "tagline": "Flood-aware logistics for Kerala"

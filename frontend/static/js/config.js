@@ -10,7 +10,7 @@
 const SAFEHAUL_CONFIG = Object.freeze({
 
   /* ── API mode ──────────────────────────────────────────────────────────── */
-  USE_REAL_API: false,          // set true when A's endpoints are live
+  USE_REAL_API: true,           // tries real API first; falls back to sample JSON on failure
   API_BASE: '/api',             // Django API root; no trailing slash
 
   /* ── Scenario ──────────────────────────────────────────────────────────── */

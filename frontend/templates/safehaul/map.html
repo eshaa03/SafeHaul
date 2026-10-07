@@ -1,38 +1,191 @@
 {% extends "safehaul/base.html" %}
 {% load static %}
 
-{% block title %}Map — SafeHaul Kerala{% endblock %}
+{% block title %}SafeHaul Kerala — Flood-Aware Route Map{% endblock %}
 
 {% block extra_css %}
   <link rel="stylesheet" href="{% static 'css/map.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/panel.css' %}" />
 {% endblock %}
 
 {% block content %}
 
-  <!-- ── MAP CONTAINER ─────────────────────────────────────────────── -->
-  <div class="map-wrap">
-    <div id="map" class="map-canvas" role="application"
-         aria-label="Flood-risk route map for the Palakkad–Kochi corridor"></div>
+<!-- ── MAP WRAP (full viewport) ──────────────────────────────────────── -->
+<div class="map-wrap">
 
-    <!-- Loading overlay — hidden once segments load -->
-    <div class="map-loading" id="map-loading" aria-live="polite">
-      <span data-i18n="map.loading">Loading map data…</span>
+  <!-- Leaflet canvas -->
+  <div id="map" class="map-canvas" role="application"
+       aria-label="Flood-risk route map for the Palakkad–Kochi corridor"></div>
+
+  <!-- Loading overlay -->
+  <div class="map-loading" id="map-loading" aria-live="polite">
+    <span data-i18n="map.loading">Loading map data…</span>
+  </div>
+
+  <!-- No-tiles notice -->
+  <div class="map-no-tiles" id="map-no-tiles" hidden>
+    <span data-i18n="map.no_tiles">Map tiles unavailable — route and risk overlay still shown.</span>
+  </div>
+
+  <!-- ── FLOOD TOGGLE (big, prominent) ─────────────────────────────── -->
+  <button id="flood-toggle"
+          class="flood-toggle"
+          aria-pressed="false"
+          aria-label="Simulate flood scenario">
+    ☀ Simulate Flood
+  </button>
+
+  <!-- ── RISK LEGEND (fixed bottom-left) ──────────────────────────── -->
+  <div class="risk-legend leaflet-control" style="position:absolute;bottom:40px;left:10px;z-index:1000;"
+       aria-label="Risk level legend">
+    <div class="risk-legend__title" data-i18n="legend.title">Risk levels</div>
+    <div class="risk-legend__row">
+      <div class="risk-legend__swatch risk-legend__swatch--low"></div>
+      <span class="risk-legend__icon" aria-hidden="true">&#9679;</span>
+      <span class="risk-legend__label" data-i18n="legend.low">Low</span>
     </div>
-
-    <!-- No-tiles notice — shown when tile network fails -->
-    <div class="map-no-tiles" id="map-no-tiles" hidden>
-      <span data-i18n="map.no_tiles">Map tiles unavailable — route and risk overlay still shown.</span>
+    <div class="risk-legend__row">
+      <div class="risk-legend__swatch risk-legend__swatch--medium"></div>
+      <span class="risk-legend__icon" aria-hidden="true">&#9650;</span>
+      <span class="risk-legend__label" data-i18n="legend.medium">Medium</span>
+    </div>
+    <div class="risk-legend__row">
+      <div class="risk-legend__swatch risk-legend__swatch--high"></div>
+      <span class="risk-legend__icon" aria-hidden="true">&#9632;</span>
+      <span class="risk-legend__label" data-i18n="legend.high">High</span>
+    </div>
+    <div class="risk-legend__row">
+      <div class="risk-legend__swatch risk-legend__swatch--closed"></div>
+      <span class="risk-legend__icon" aria-hidden="true">&#10005;</span>
+      <span class="risk-legend__label" data-i18n="legend.closed">Closed</span>
     </div>
   </div>
+
+  <!-- ── SEGMENT DETAIL PANEL (slide-up on tap) ────────────────────── -->
+  <div id="seg-panel-container" hidden aria-live="polite"></div>
+
+</div><!-- end .map-wrap -->
+
+<!-- ── DRAWER TOGGLE BUTTON ──────────────────────────────────────────── -->
+<button class="drawer-toggle" id="drawer-toggle" aria-label="Open trip planner and services" aria-expanded="false">
+  &#9776;
+</button>
+
+<!-- ── SIDE DRAWER: trip form, options, hospitals ─────────────────────── -->
+<aside class="side-drawer" id="side-drawer" hidden aria-label="Trip planner and services">
+
+  <!-- ── TRIP FORM ─────────────────────────────────────────────────── -->
+  <section class="trip-form" aria-label="Plan a trip">
+    <h2 data-i18n="trip.title">Plan a trip</h2>
+
+    <div class="form-row">
+      <label for="trip-origin" data-i18n="trip.origin">Origin</label>
+      <input id="trip-origin" type="text" value="Palakkad" />
+    </div>
+    <div class="form-row">
+      <label for="trip-dest" data-i18n="trip.destination">Destination</label>
+      <select id="trip-dest">
+        <option value="Kochi">Kochi</option>
+        <option value="Thrissur">Thrissur</option>
+        <option value="Palakkad">Palakkad</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="trip-depart" data-i18n="trip.depart_at">Departure time</label>
+      <input id="trip-depart" type="datetime-local" value="2026-10-08T06:00" />
+    </div>
+    <div class="form-row">
+      <label for="trip-vehicle" data-i18n="trip.vehicle_type">Vehicle type</label>
+      <select id="trip-vehicle">
+        <option value="lcv">LCV (Light Commercial Vehicle)</option>
+        <option value="mini_truck">Mini truck</option>
+        <option value="heavy_truck">Heavy truck</option>
+        <option value="tipper">Tipper</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="trip-cargo-type" data-i18n="trip.cargo_type">Cargo type</label>
+      <input id="trip-cargo-type" type="text" value="vegetables" />
+    </div>
+    <div class="form-row">
+      <label for="trip-weight" data-i18n="trip.cargo_weight">Weight (kg)</label>
+      <input id="trip-weight" type="number" value="5000" min="1" />
+    </div>
+    <div class="form-row">
+      <label for="trip-shelf" data-i18n="trip.shelf_life">Shelf life (hours)</label>
+      <input id="trip-shelf" type="number" value="8" min="1" />
+    </div>
+    <div class="form-row">
+      <label for="trip-value" data-i18n="trip.value">Cargo value (₹)</label>
+      <input id="trip-value" type="number" value="250000" min="0" />
+    </div>
+
+    <button id="trip-submit" class="btn btn--primary" style="margin-top:4px;"
+            data-i18n="trip.get_options">Get route options</button>
+  </section>
+
+  <!-- ── OPTIONS PANEL (populated by options.js) ───────────────────── -->
+  <section id="options-panel" hidden aria-live="polite" aria-label="Route options"></section>
+
+  <!-- ── HOSPITAL LIST ─────────────────────────────────────────────── -->
+  <section class="hospital-section" aria-label="Hospitals">
+    <h2>🏥 <span data-i18n="services.category_hospital">Hospital</span></h2>
+    <div id="hospital-list" aria-live="polite">
+      <p class="svc-empty">Submit the trip form to see reachable hospitals.</p>
+    </div>
+  </section>
+
+</aside><!-- end .side-drawer -->
+
+<!-- ── RECEIVER-NOTIFIED TOAST ─────────────────────────────────────────── -->
+<div id="receiver-toast" hidden role="status" aria-live="polite"
+     data-i18n="options.receiver_notified">Receiver notified of updated ETA</div>
 
 {% endblock %}
 
 {% block extra_scripts %}
+  <script src="{% static 'js/risk.js' %}"></script>
+  <script src="{% static 'js/options.js' %}"></script>
+  <script src="{% static 'js/trip.js' %}"></script>
+  <script src="{% static 'js/service.js' %}"></script>
   <script src="{% static 'js/map.js' %}"></script>
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
+
+      /* Prefill trip form */
+      Trip.prefill();
+
+      /* Init map (loads routes + segments, wires flood toggle) */
       MapApp.init();
+
+      /* Load hospital list on page load */
+      Service.loadHospitals();
+
+      /* Trip form submit */
+      document.getElementById('trip-submit').addEventListener('click', function () {
+        Trip.submit();
+      });
+
+      /* Drawer toggle */
+      var drawerToggle = document.getElementById('drawer-toggle');
+      var drawer       = document.getElementById('side-drawer');
+      drawerToggle.addEventListener('click', function () {
+        var open = !drawer.hidden;
+        drawer.hidden = open;
+        drawerToggle.setAttribute('aria-expanded', String(!open));
+      });
+
+      /* Update flood-toggle label once i18n strings are ready.
+         base.html already called I18n.init(); we just read the already-loaded t(). */
+      var floodBtn = document.getElementById('flood-toggle');
+      if (floodBtn) floodBtn.textContent = '☀ ' + t('flood.off');
+
+      /* Open drawer by default on wider screens */
+      if (window.innerWidth >= 600) {
+        drawer.hidden = false;
+        drawerToggle.setAttribute('aria-expanded', 'true');
+      }
     });
   </script>
 {% endblock %}
