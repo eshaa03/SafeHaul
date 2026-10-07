@@ -1,0 +1,30 @@
+[
+  {
+    "vehicle_type": "mini_truck",
+    "max_depth_level": 1,
+    "height_m": 2.2,
+    "fuel_cost_per_km_inr": 12.0,
+    "notes": "Lowest ground clearance"
+  },
+  {
+    "vehicle_type": "lcv",
+    "max_depth_level": 2,
+    "height_m": 2.8,
+    "fuel_cost_per_km_inr": 14.0,
+    "notes": "Demo default"
+  },
+  {
+    "vehicle_type": "heavy_truck",
+    "max_depth_level": 3,
+    "height_m": 3.8,
+    "fuel_cost_per_km_inr": 20.0,
+    "notes": ""
+  },
+  {
+    "vehicle_type": "tipper",
+    "max_depth_level": 3,
+    "height_m": 3.5,
+    "fuel_cost_per_km_inr": 18.0,
+    "notes": "Higher chassis"
+  }
+]

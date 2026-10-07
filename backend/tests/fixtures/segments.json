@@ -1,0 +1,68 @@
+[
+  {
+    "segment_id": "S-01",
+    "name": "Palakkad to Vadakkencherry (illustrative)",
+    "route_ids": ["main", "alt1"],
+    "geometry": [[10.787, 76.655], [10.600, 76.480]],
+    "length_km": 28.5,
+    "road_class": "highway",
+    "elevation_m": 55,
+    "river_distance_m": 1800,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "simulated"
+  },
+  {
+    "segment_id": "S-02",
+    "name": "Vadakkencherry to Thrissur (illustrative)",
+    "route_ids": ["main"],
+    "geometry": [[10.600, 76.480], [10.528, 76.214]],
+    "length_km": 22.0,
+    "road_class": "highway",
+    "elevation_m": 40,
+    "river_distance_m": 900,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "simulated"
+  },
+  {
+    "segment_id": "S-03",
+    "name": "Thrissur to Chalakudy river crossing (illustrative)",
+    "route_ids": ["main"],
+    "geometry": [[10.528, 76.214], [10.307, 76.332]],
+    "length_km": 30.2,
+    "road_class": "highway",
+    "elevation_m": 12,
+    "river_distance_m": 120,
+    "historical_flood_count": 3,
+    "hazard_type": "underpass",
+    "flood_memory": {"trigger_mm": 80, "events": 2},
+    "data_source": "simulated"
+  },
+  {
+    "segment_id": "S-04",
+    "name": "Vadakkencherry to Irinjalakuda (alt route, illustrative)",
+    "route_ids": ["alt1"],
+    "geometry": [[10.600, 76.480], [10.340, 76.210]],
+    "length_km": 35.0,
+    "road_class": "state_road",
+    "elevation_m": 38,
+    "river_distance_m": 1200,
+    "historical_flood_count": 0,
+    "hazard_type": "none",
+    "data_source": "simulated"
+  },
+  {
+    "segment_id": "S-05",
+    "name": "Irinjalakuda to Kochi via Kodungallur (alt route, illustrative)",
+    "route_ids": ["alt1"],
+    "geometry": [[10.340, 76.210], [9.931, 76.267]],
+    "length_km": 62.0,
+    "road_class": "state_road",
+    "elevation_m": 8,
+    "river_distance_m": 600,
+    "historical_flood_count": 1,
+    "hazard_type": "none",
+    "data_source": "simulated"
+  }
+]
